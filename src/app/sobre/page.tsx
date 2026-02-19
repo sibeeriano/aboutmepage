@@ -75,7 +75,7 @@ Adobe InDesign`,
 
 export default function SobrePage() {
   return (
-    <div className="min-h-screen bg-[#c0c0c0] p-4">
+    <div className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title="SOBRE MÍ - PERFIL">
@@ -97,7 +97,7 @@ export default function SobrePage() {
             </nav>
           </WindowTitleBar>
 
-          <main className="border-t-2 border-black bg-[#b19cd9] p-6">
+          <main className="border-t-2 border-black bg-[#b19cd9] p-4 sm:p-6">
             <Link href="/">
               <Button variant="ghost" size="sm" className="mb-6 !bg-white/80">
                 ← Volver
@@ -106,7 +106,7 @@ export default function SobrePage() {
 
             <Text
               as="h1"
-              className="mb-6 font-head text-2xl font-bold text-white drop-shadow-[2px_2px_0_#000]"
+              className="mb-6 font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
             >
               SOBRE MÍ
             </Text>
@@ -130,8 +130,8 @@ export default function SobrePage() {
                     id={section.id}
                     className={`scroll-mt-24 ${section.color}`}
                   >
-                    <div className="flex items-start gap-4">
-                      <Icon className="size-12 shrink-0 text-[#ffdb33] drop-shadow-[2px_2px_0_#000]" />
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <Icon className="size-10 shrink-0 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-12" />
                       <div className="flex-1">
                         <Card.Header>
                           <Card.Title className="!font-bold !text-black">
@@ -157,7 +157,7 @@ export default function SobrePage() {
             </Link>
           </main>
 
-          <footer className="border-t-2 border-black bg-[#c0c0c0] px-6 py-4 shadow-win95-inset">
+          <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
             <div className="text-center">
               <Text className="font-medium text-black">
                 © 2025 Facundo Gabriel Vara

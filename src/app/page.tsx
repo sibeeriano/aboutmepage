@@ -52,7 +52,7 @@ const posts = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#c0c0c0] p-4">
+    <div className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title="INICIO - CV INTERACTIVO">
@@ -74,12 +74,12 @@ export default function Home() {
             </nav>
           </WindowTitleBar>
 
-          <main className="border-t-2 border-black bg-[#ff9f7a] p-6">
-            <section className="mb-10">
-              <Text as="h1" className="mb-2 text-3xl font-bold text-white drop-shadow-[2px_2px_0_#000]">
+          <main className="border-t-2 border-black bg-[#ff9f7a] p-4 sm:p-6">
+            <section className="mb-8 sm:mb-10">
+              <Text as="h1" className="mb-2 text-2xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-3xl">
                 Facundo Gabriel Vara
               </Text>
-              <Text className="mb-4 text-lg font-medium text-black">
+              <Text className="mb-4 text-base font-medium text-black sm:text-lg">
                 Software Engineer · Autodidacta · Resiliente · Proactivo
               </Text>
               <Link href="/sobre">
@@ -92,14 +92,14 @@ export default function Home() {
               </Link>
             </section>
 
-            <section className="mb-10">
+            <section className="mb-8 sm:mb-10">
               <Text
                 as="h2"
-                className="mb-4 font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000]"
+                className="mb-4 font-head text-lg font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-xl"
               >
                 SECCIONES
               </Text>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {posts.map((post) => {
                   const Icon = post.icon;
                   return (
@@ -112,7 +112,7 @@ export default function Home() {
                         className={`flex h-full flex-col border-2 border-black p-4 transition hover:-translate-y-0.5 hover:shadow-win95-lg ${post.color}`}
                       >
                         <div className="mb-3 flex items-start justify-between">
-                          <Icon className="size-14 text-[#ffdb33] drop-shadow-[2px_2px_0_#000]" />
+                          <Icon className="size-12 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-14" />
                           <span className="text-xs font-medium opacity-80">
                             {post.date}
                           </span>
@@ -145,9 +145,9 @@ export default function Home() {
                 CONTACTO
               </Text>
               <Link href="/sobre">
-                <Card className="flex items-center gap-4 border-2 border-black bg-[#b19cd9] p-4 transition hover:-translate-y-0.5 hover:shadow-win95-lg">
-                  <ContactIcon className="size-14 shrink-0 text-[#ffdb33] drop-shadow-[2px_2px_0_#000]" />
-                  <div className="flex-1">
+                <Card className="flex flex-col gap-4 border-2 border-black bg-[#b19cd9] p-4 transition hover:-translate-y-0.5 hover:shadow-win95-lg sm:flex-row sm:items-center">
+                  <ContactIcon className="size-12 shrink-0 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-14" />
+                  <div className="min-w-0 flex-1">
                     <Card.Header>
                       <Card.Title className="!font-bold !text-black">
                         Perfil y contacto
@@ -170,9 +170,9 @@ export default function Home() {
             </section>
           </main>
 
-          <footer className="border-t-2 border-black bg-[#c0c0c0] px-6 py-4 shadow-win95-inset">
+          <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
             <div className="flex flex-col items-center gap-1 text-center">
-              <Text className="font-medium text-black">
+              <Text className="text-sm font-medium text-black sm:text-base">
                 facundog.vara@gmail.com · 15-3778-2511
               </Text>
               <Text className="text-sm text-black/80">

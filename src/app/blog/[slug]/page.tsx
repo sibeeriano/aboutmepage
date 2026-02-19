@@ -267,7 +267,7 @@ export default async function BlogPost({
   const Icon = config.icon;
 
   return (
-    <div className="min-h-screen bg-[#c0c0c0] p-4">
+    <div className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title={`${post.title.toUpperCase()} - ${post.date}`}>
@@ -284,20 +284,20 @@ export default async function BlogPost({
             </nav>
           </WindowTitleBar>
 
-          <main className={`border-t-2 border-black p-6 ${config.bgColor}`}>
+          <main className={`border-t-2 border-black p-4 sm:p-6 ${config.bgColor}`}>
             <Link href="/">
-              <Button variant="ghost" size="sm" className="mb-6 !bg-white/80">
+              <Button variant="ghost" size="sm" className="mb-4 !bg-white/80 sm:mb-6">
                 ← Volver
               </Button>
             </Link>
 
             <article>
-              <div className="mb-6 flex items-center gap-4">
-                <Icon className="size-16 text-[#ffdb33] drop-shadow-[2px_2px_0_#000]" />
+              <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
+                <Icon className="size-12 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-16" />
                 <div>
                   <Text
                     as="h1"
-                    className="font-head text-2xl font-bold text-white drop-shadow-[2px_2px_0_#000]"
+                    className="font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
                   >
                     {post.title}
                   </Text>
@@ -307,7 +307,7 @@ export default async function BlogPost({
 
               {hasSections(post) ? (
                 <>
-                  <nav className="mb-8 flex flex-wrap gap-2">
+                  <nav className="mb-6 flex flex-wrap gap-2 sm:mb-8">
                     {post.sections!.map((section) => (
                       <a
                         key={section.id}
@@ -345,14 +345,14 @@ export default async function BlogPost({
               ) : post.noCard ? (
                 <div>
                   {post.logos && post.logos.length > 0 && (
-                    <div className="mb-8 flex flex-wrap gap-6">
+                    <div className="mb-6 flex flex-wrap gap-4 sm:mb-8 sm:gap-6">
                       {post.logos.map((logo) => (
                         <img
                           key={logo.name}
                           src={logo.src}
                           alt={logo.name}
                           title={logo.name}
-                          className="size-16 rounded border-2 border-black bg-white p-2 shadow-win95 md:size-20"
+                          className="size-12 rounded border-2 border-black bg-white p-1.5 shadow-win95 sm:size-16 md:size-20"
                         />
                       ))}
                     </div>
@@ -373,9 +373,9 @@ export default async function BlogPost({
             </article>
           </main>
 
-          <footer className="border-t-2 border-black bg-[#c0c0c0] px-6 py-4 shadow-win95-inset">
+          <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
             <div className="text-center">
-              <Text className="font-medium text-black">
+              <Text className="text-sm font-medium text-black sm:text-base">
                 © 2025 Facundo Gabriel Vara
               </Text>
             </div>

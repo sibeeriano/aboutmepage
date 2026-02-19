@@ -1,6 +1,12 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo_Black, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 const archivoBlack = Archivo_Black({
   subsets: ["latin"],
@@ -29,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${archivoBlack.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+        className={`${archivoBlack.variable} ${spaceGrotesk.variable} overflow-x-hidden font-sans antialiased`}
       >
         {children}
       </body>
