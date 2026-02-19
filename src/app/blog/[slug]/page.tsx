@@ -267,7 +267,7 @@ export default async function BlogPost({
   const Icon = config.icon;
 
   return (
-    <div className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
+    <div id="top" className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title={post.title.toUpperCase()}>
@@ -374,19 +374,17 @@ export default async function BlogPost({
           </main>
 
           <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
-            <div className="flex flex-col items-center gap-2 text-center">
-              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
-                <Text className="text-sm font-medium text-black sm:text-base">
-                  © 2026 Facundo Gabriel Vara
-                </Text>
-                <span className="text-black/50">·</span>
-                <Link
-                  href="/about-this-page"
-                  className="text-sm font-medium text-black underline decoration-black underline-offset-2 hover:opacity-80"
-                >
-                  About this page
-                </Link>
-              </div>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-center">
+              <Text className="text-sm font-medium text-black sm:text-base">
+                © 2026 Facundo Gabriel Vara
+              </Text>
+              <span className="text-black/50">·</span>
+              <a
+                href="#top"
+                className="text-sm font-medium text-black underline decoration-black underline-offset-2 hover:opacity-80"
+              >
+                Top ↑
+              </a>
             </div>
           </footer>
         </WindowFrame>
