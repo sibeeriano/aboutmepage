@@ -91,7 +91,7 @@ export default function SobrePage() {
               </Link>
               <Link href="/sobre">
                 <Button variant="outline" size="sm">
-                  SOBRE
+                  Sobre mí
                 </Button>
               </Link>
             </nav>
