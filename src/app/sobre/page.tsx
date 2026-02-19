@@ -158,10 +158,19 @@ export default function SobrePage() {
           </main>
 
           <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
-            <div className="text-center">
-              <Text className="font-medium text-black">
-                © 2025 Facundo Gabriel Vara
-              </Text>
+            <div className="flex flex-col items-center gap-2 text-center">
+              <div className="flex flex-wrap justify-center gap-x-4 gap-y-1">
+                <Text className="font-medium text-black">
+                  © 2026 Facundo Gabriel Vara
+                </Text>
+                <span className="text-black/50">·</span>
+                <Link
+                  href="/about-this-page"
+                  className="text-sm font-medium text-black underline decoration-black underline-offset-2 hover:opacity-80"
+                >
+                  About this page
+                </Link>
+              </div>
             </div>
           </footer>
         </WindowFrame>

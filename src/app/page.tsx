@@ -139,9 +139,6 @@ export default function Home() {
                       >
                         <div className="mb-3 flex items-start justify-between">
                           <Icon className="size-12 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-14" />
-                          <span className="text-xs font-medium opacity-80">
-                            {post.date}
-                          </span>
                         </div>
                         <Card.Header>
                           <Card.Title className="!font-bold !text-black">
@@ -259,13 +256,17 @@ export default function Home() {
           </main>
 
           <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
-            <div className="flex flex-col items-center gap-1 text-center">
-              <Text className="text-sm font-medium text-black sm:text-base">
-                facundog.vara@gmail.com · 15-3778-2511
-              </Text>
+            <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-center">
               <Text className="text-sm text-black/80">
-                © 2025 Facundo Gabriel Vara
+                © 2026 Facundo Gabriel Vara
               </Text>
+              <span className="text-black/50">·</span>
+              <Link
+                href="/about-this-page"
+                className="text-sm font-medium text-black underline decoration-black underline-offset-2 hover:opacity-80"
+              >
+                About this page
+              </Link>
             </div>
           </footer>
         </WindowFrame>
