@@ -90,10 +90,19 @@ export default function AboutThisPage() {
 
             <Text
               as="h1"
-              className="mb-6 font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
+              className="mb-4 font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
             >
               ABOUT THIS PAGE
             </Text>
+
+            <Link
+              href="https://github.com/sibeeriano/aboutmepage"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mb-6 inline-block font-bold text-black underline decoration-black underline-offset-2 hover:opacity-80"
+            >
+              Repositorio del código →
+            </Link>
 
             <Text className="mb-8 font-medium text-black">
               Resumen del desarrollo de esta página web. Stack, diseño y decisiones

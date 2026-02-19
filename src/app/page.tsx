@@ -103,9 +103,28 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              <Text className="mb-4 text-base font-medium text-black sm:text-lg">
-                Software Engineer · Autodidacta · Resiliente · Proactivo
+              <Text className="mb-2 text-base font-bold text-black sm:text-lg">
+                Custom Software Engineering Analyst @ Accenture
               </Text>
+              <Text className="mb-2 text-sm font-medium text-black sm:text-base">
+                Desarrollo y mantenimiento del portal global de carga de horaria
+                MyT&E (my time and expenses), trabajando con equipos
+                internacionales y stack enterprise.
+              </Text>
+              <Text className="mb-2 text-sm font-medium text-black/90 sm:text-base">
+                AngularJS · C# .NET · SQL Server · Inglés
+              </Text>
+              <Text className="mb-1 text-sm font-bold text-black sm:text-base">
+                Último proyecto freelance
+              </Text>
+              <Link
+                href="https://guish.com.mx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mb-4 inline-block text-sm font-medium text-black underline decoration-black underline-offset-2 hover:opacity-80 sm:text-base"
+              >
+                Güish
+              </Link>
               <div className="flex justify-center">
                 <Link href="/sobre">
                   <Button
