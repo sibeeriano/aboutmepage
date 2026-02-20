@@ -18,7 +18,6 @@ const posts = [
     title: "Backend",
     excerpt:
       "Java, Spring Boot, C# .NET, Node.js y SQL Server. Experiencia en sector bancario y APIs.",
-    date: "19 Feb 2025",
     color: "bg-[#ff9f7a]",
     icon: CodeIcon,
   },
@@ -27,7 +26,6 @@ const posts = [
     title: "Frontend",
     excerpt:
       "Angular, React, Next.js y TypeScript. Portales corporativos y proyectos freelance.",
-    date: "18 Feb 2025",
     color: "bg-[#ffdb33]",
     icon: FolderIcon,
   },
@@ -36,7 +34,6 @@ const posts = [
     title: "Experiencia",
     excerpt:
       "Accenture (MyT&E, BBVA, ICBC), Sib-l freelance, Academy y Digital House.",
-    date: "17 Feb 2025",
     color: "bg-[#b19cd9]",
     icon: BriefcaseIcon,
   },
@@ -45,15 +42,11 @@ const posts = [
     title: "Educación",
     excerpt:
       "Formación académica y cursos realizados.",
-    date: "16 Feb 2025",
     color: "bg-[#84e084]",
     icon: GraduationIcon,
   },
 ];
 
-// Posts de LinkedIn para embeber. Para obtener el URN: abrí un post en LinkedIn →
-// tres puntos (⋯) → "Insertar esta publicación" → copiá el código y extraé el URN
-// Ejemplo: urn:li:share:1234567890123456789
 const linkedInPosts: { urn: string }[] = [
   { urn: "urn:li:activity:7430326740582866944" },
 ];

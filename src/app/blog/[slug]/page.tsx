@@ -1,4 +1,4 @@
-import React from "react";
+import type { ReactElement } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Button } from "@/components/retroui/Button";
@@ -14,7 +14,7 @@ import {
 
 const slugConfig: Record<
   string,
-  { color: string; bgColor: string; icon: (props: { className?: string }) => React.ReactElement }
+  { color: string; bgColor: string; icon: (props: { className?: string }) => ReactElement }
 > = {
   "bienvenido-al-blog-retro": {
     color: "bg-[#ff9f7a]",
@@ -47,7 +47,6 @@ type PostSection = {
 type Post = {
   title: string;
   content: string;
-  date: string;
   sections?: PostSection[];
   noCard?: boolean;
   logos?: { name: string; src: string }[];
@@ -56,7 +55,6 @@ type Post = {
 const posts: Record<string, Post> = {
   "bienvenido-al-blog-retro": {
     title: "Backend",
-    date: "19 Feb 2025",
     content: `
       Experiencia en desarrollo backend para el sector bancario y fintech,
       trabajando con equipos internacionales en Accenture.
@@ -96,7 +94,6 @@ const posts: Record<string, Post> = {
   },
   "diseno-neobrutalism": {
     title: "Frontend",
-    date: "18 Feb 2025",
     content: `
       Desarrollo de interfaces para portales corporativos, HomeBanking
       empresarial y proyectos web propios.
@@ -136,7 +133,6 @@ const posts: Record<string, Post> = {
   },
   "retroui-nextjs": {
     title: "Experiencia",
-    date: "17 Feb 2025",
     content: "",
     sections: [
       {
@@ -195,7 +191,6 @@ Stack: Javascript, Node, Express, SQL, HTML, CSS, Bootstrap.`,
   },
   educacion: {
     title: "Educación",
-    date: "16 Feb 2025",
     content: "",
     sections: [
       {
@@ -294,15 +289,12 @@ export default async function BlogPost({
             <article>
               <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
                 <Icon className="size-12 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-16" />
-                <div>
-                  <Text
-                    as="h1"
-                    className="font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
-                  >
-                    {post.title}
-                  </Text>
-                  <Text className="font-medium text-black/90">{post.date}</Text>
-                </div>
+                <Text
+                  as="h1"
+                  className="font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
+                >
+                  {post.title}
+                </Text>
               </div>
 
               {hasSections(post) ? (

@@ -123,7 +123,6 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-/* Win95 style - efecto 3D retro */
 .shadow-win95 {
   box-shadow:
     2px 2px 0 0 #dfdfdf,
