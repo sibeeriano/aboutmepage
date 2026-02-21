@@ -97,7 +97,7 @@ export default function Home() {
                 </div>
               </div>
               <Text className="mb-2 text-base font-bold text-black sm:text-lg">
-                Custom Software Engineering Analyst @ Accenture
+                SSR | Custom Software Engineering Analyst @ Accenture
               </Text>
               <Text className="mb-2 text-sm font-medium text-black sm:text-base">
                 Desarrollo y mantenimiento del portal global de carga de horaria
