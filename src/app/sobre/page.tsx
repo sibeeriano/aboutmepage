@@ -29,8 +29,6 @@ Trabajo en equipo con enfoque en calidad y mejora continua.`,
     icon: ContactIcon,
     content: `Teléfono: 2076-7212 / 15-3778-2511
 Email: facundog.vara@gmail.com
-Dirección: Alvear 5180, Adrogué, Bs.As.
-D.N.I.: 35.217.257
 Fecha de nacimiento: 12/05/1990`,
   },
   {

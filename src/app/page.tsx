@@ -48,6 +48,7 @@ const posts = [
 ];
 
 const linkedInPosts: { urn: string }[] = [
+  { urn: "urn:li:activity:7431186079791321088" },
   { urn: "urn:li:activity:7430326740582866944" },
 ];
 
@@ -245,7 +246,7 @@ export default function Home() {
                   </Card.Header>
                   <Card.Content>
                     <Text className="font-medium text-black">
-                      facundog.vara@gmail.com · Alvear 5180, Adrogué
+                      facundog.vara@gmail.com
                     </Text>
                     <Link
                       href="https://w.app/facuvara"
