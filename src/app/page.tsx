@@ -106,7 +106,7 @@ export default function Home() {
                 internacionales y stack enterprise.
               </Text>
               <Text className="mb-2 text-sm font-medium text-black/90 sm:text-base">
-                AngularJS · C# .NET · SQL Server · Inglés
+                Angular · C# .NET · SQL Server · Inglés
               </Text>
               <Text className="mb-1 text-sm font-bold text-black sm:text-base">
                 Último proyecto freelance

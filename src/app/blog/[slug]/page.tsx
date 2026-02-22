@@ -44,31 +44,65 @@ type PostSection = {
   content: string;
 };
 
+type StackItem = {
+  tech: string;
+  description: string;
+  period: string;
+};
+
+type StructuredLayout = {
+  intro: string;
+  introSecondary?: string;
+  specializations: string[];
+  stack: StackItem[];
+};
+
 type Post = {
   title: string;
   content: string;
   sections?: PostSection[];
   noCard?: boolean;
   logos?: { name: string; src: string }[];
+  structuredLayout?: StructuredLayout;
 };
 
 const posts: Record<string, Post> = {
   "bienvenido-al-blog-retro": {
     title: "Backend",
-    content: `
-      Experiencia en desarrollo backend para el sector bancario y fintech,
-      trabajando con equipos internacionales en Accenture.
-      
-      Stack principal:
-      - Java y SpringBoot para microservicios (ICBC, BBVA)
-      - C# .NET y SQL Server en portales globales (MyT&E)
-      - Node.js y Express para APIs REST (proyectos freelance y Digital House)
-      - SQL y bases de datos relacionales
-      
-      Desarrollo de servicios de consulta vía APIs, migración a Cloud,
-      procesamiento de transacciones y sistemas de HomeBanking empresarial.
-    `,
+    content: "",
     noCard: true,
+    structuredLayout: {
+      intro:
+        "Experiencia en desarrollo backend para sector bancario y fintech, trabajando en entornos enterprise con equipos internacionales en Accenture.",
+      specializations: [
+        "Desarrollo de APIs REST seguras y escalables",
+        "Integración con sistemas legacy y core bancarios",
+        "Procesamiento de transacciones y lógica de negocio crítica",
+        "Migración y despliegue en entornos cloud",
+      ],
+      stack: [
+        {
+          tech: "C# .NET & SQL Server",
+          description: "Portales bancarios globales (MyT&E)",
+          period: "2024 - Actualidad",
+        },
+        {
+          tech: "Java & Spring Boot",
+          description: "Microservicios para ICBC y BBVA",
+          period: "2022 - 2024",
+        },
+        {
+          tech: "Node.js & Express",
+          description: "APIs REST para proyectos freelance y Digital House",
+          period: "2020 - Actualidad",
+        },
+        {
+          tech: "SQL y bases de datos relacionales",
+          description: "Diseño y mantenimiento",
+          period: "2020 - Actualidad",
+        },
+      ],
+    },
     logos: [
       {
         name: "Java",
@@ -94,20 +128,43 @@ const posts: Record<string, Post> = {
   },
   "diseno-neobrutalism": {
     title: "Frontend",
-    content: `
-      Desarrollo de interfaces para portales corporativos, HomeBanking
-      empresarial y proyectos web propios.
-      
-      Stack principal:
-      - AngularJS y Angular en proyectos bancarios (MyT&E, ICBC)
-      - Next.js 16, React y TypeScript en proyectos freelance (Guish.com)
-      - HTML, CSS y Bootstrap para e-commerce y aplicaciones web
-      - JavaScript para desarrollo fullstack
-      
-      Experiencia en portales globales con equipos internacionales,
-      interfaces de transacciones y diseño responsive.
-    `,
+    content: "",
     noCard: true,
+    structuredLayout: {
+      intro:
+        "Desarrollo de interfaces para portales corporativos y aplicaciones empresariales de uso global.",
+      introSecondary:
+        "Actualmente trabajo en el portal interno MyT&E (My Time & Expenses) de Accenture, utilizado por empleados de distintas sedes del mundo para la carga y gestión quincenal de horas.",
+      specializations: [
+        "Desarrollo de aplicaciones SPA en Angular",
+        "Arquitectura frontend modular y mantenible",
+        "Integración con APIs REST y servicios backend",
+        "Optimización de rendimiento en aplicaciones de alto uso",
+        "Diseño responsive para entornos corporativos",
+      ],
+      stack: [
+        {
+          tech: "Angular",
+          description: "Portal global MyT&E (Accenture)",
+          period: "2024 - Actualidad",
+        },
+        {
+          tech: "Angular (ICBC)",
+          description: "Interfaces para sector bancario",
+          period: "2022 - 2023",
+        },
+        {
+          tech: "Next.js, React & TypeScript",
+          description: "Proyectos freelance y desarrollos propios (Guish)",
+          period: "Actualidad",
+        },
+        {
+          tech: "HTML, CSS & Bootstrap",
+          description: "E-commerce y aplicaciones web",
+          period: "Actualidad",
+        },
+      ],
+    },
     logos: [
       {
         name: "Angular",
@@ -142,7 +199,7 @@ const posts: Record<string, Post> = {
 
 Desarrollo y mantenimiento del portal global de carga de tiempos 
 (time-loading) de Accenture. Trabajo con equipos internacionales.
-Stack: AngularJS, C# .NET, SQL Server. Idioma: Inglés.`,
+Stack: Angular, C# .NET, SQL Server. Idioma: Inglés.`,
       },
       {
         id: "bbva-banco-frances",
@@ -334,6 +391,71 @@ export default async function BlogPost({
                     ))}
                   </div>
                 </>
+              ) : post.structuredLayout ? (
+                <div className="space-y-6">
+                  {post.logos && post.logos.length > 0 && (
+                    <div className="flex flex-wrap gap-3 sm:gap-4">
+                      {post.logos.map((logo) => (
+                        <img
+                          key={logo.name}
+                          src={logo.src}
+                          alt={logo.name}
+                          title={logo.name}
+                          className="size-10 rounded border-2 border-black bg-white p-1.5 shadow-win95 sm:size-12"
+                        />
+                      ))}
+                    </div>
+                  )}
+                  <div className="rounded-sm border-2 border-black bg-white/90 p-4 shadow-win95-inset">
+                    <p className="font-sans text-base leading-relaxed font-medium text-black">
+                      {post.structuredLayout.intro}
+                    </p>
+                    {post.structuredLayout.introSecondary && (
+                      <p className="mt-3 font-sans text-base leading-relaxed font-medium text-black">
+                        {post.structuredLayout.introSecondary}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="mb-3 font-head text-sm font-bold uppercase tracking-wide text-black sm:text-base">
+                      En qué me especializo
+                    </h3>
+                    <ul className="space-y-2">
+                      {post.structuredLayout.specializations.map((item) => (
+                        <li
+                          key={item}
+                          className="flex items-start gap-2 font-sans text-sm font-medium text-black sm:text-base"
+                        >
+                          <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-black" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="mb-4 font-head text-sm font-bold uppercase tracking-wide text-black sm:text-base">
+                      Stack principal
+                    </h3>
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {post.structuredLayout.stack.map((item) => (
+                        <Card
+                          key={item.tech}
+                          className={`${config.color} border-2 border-black p-3 shadow-win95 sm:p-4`}
+                        >
+                          <div className="font-head text-sm font-bold text-black sm:text-base">
+                            {item.tech}
+                          </div>
+                          <div className="mt-1 font-sans text-xs font-medium text-black/90 sm:text-sm">
+                            {item.description}
+                          </div>
+                          <div className="mt-2 font-sans text-xs font-bold text-black/80">
+                            {item.period}
+                          </div>
+                        </Card>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               ) : post.noCard ? (
                 <div>
                   {post.logos && post.logos.length > 0 && (
