@@ -11,25 +11,28 @@ import {
   BriefcaseIcon,
 } from "@/components/retro/RetroIcons";
 
+const GMAIL_COMPOSE_URL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=facundog.vara%40gmail.com&su=Consulta%20desde%20sib.dev&body=Hola%20Facundo%2C%20vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20un%20proyecto.";
+
 const sections = [
   {
     id: "perfil",
     title: "Perfil",
     color: "bg-[#b19cd9]",
     icon: BriefcaseIcon,
-    content: `Autodidacta · Compañero · Resiliente · Proactivo · Asertivo · Apasionado
+    content: `Software Engineer con experiencia en productos bancarios, fintech y herramientas internas.
 
-Software Engineer con experiencia en el sector bancario y fintech.
-Trabajo en equipo con enfoque en calidad y mejora continua.`,
+Combino desarrollo full stack, mirada de producto y formación en diseño para convertir necesidades complejas en experiencias claras y mantenibles.
+
+Trabajo en equipo con foco en calidad, comunicación y mejora continua.`,
   },
   {
     id: "contacto",
     title: "Contacto",
     color: "bg-[#ff9f7a]",
     icon: ContactIcon,
-    content: `Teléfono: 2076-7212 / 15-3778-2511
-Email: facundog.vara@gmail.com
-Fecha de nacimiento: 12/05/1990`,
+    content: `Email: facundog.vara@gmail.com
+Ubicación: Buenos Aires, Argentina`,
   },
   {
     id: "ingles",
@@ -49,25 +52,31 @@ Test Rosetta Stone: C1+`,
 
 Frontend: Angular, Next.js, TypeScript, React, Sass, CSS, HTML
 
-Herramientas: Spring Boot, Node.js, Express, Git Bash, GitLab, GitHub, Kibana, Wyn SCP, Jenkins
+Herramientas: Spring Boot, Node.js, Express, Git, GitLab, GitHub, Kibana, WinSCP, Jenkins
 
 Programas: Insomnia, Postman`,
   },
   {
     id: "diseno",
-    title: "Diseño Gráfico",
+    title: "Diseño UX/UI y visual",
     color: "bg-[#b19cd9]",
     icon: FolderIcon,
-    content: `Adobe Photoshop
-Adobe Illustrator
-Adobe InDesign`,
+    content: `UX: flujos claros, jerarquía de información y usabilidad
+
+UI: interfaces consistentes, diseño responsive y sistemas visuales
+
+Accesibilidad: semántica, contraste, navegación por teclado y contenido comprensible
+
+Diseño gráfico: Adobe Photoshop, Illustrator e InDesign`,
   },
   {
     id: "office",
-    title: "Paquete Office",
+    title: "Forma de trabajo",
     color: "bg-[#ff9f7a]",
     icon: FolderIcon,
-    content: `Word · Excel · Outlook · PowerPoint`,
+    content: `Colaboración con equipos internacionales
+Comunicación con perfiles técnicos y de negocio
+Análisis, desarrollo, mantenimiento y mejora continua`,
   },
 ];
 
@@ -78,29 +87,30 @@ export default function SobrePage() {
         <WindowFrame>
           <WindowTitleBar title="SOBRE MÍ - PERFIL">
             <nav className="flex gap-2">
-              <Link href="/">
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
-                >
+              <Button
+                asChild
+                variant="default"
+                size="sm"
+                className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
+              >
+                <Link href="/">
                   HOME
-                </Button>
-              </Link>
-              <Link href="/sobre">
-                <Button variant="outline" size="sm">
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/sobre">
                   Sobre mí
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </nav>
           </WindowTitleBar>
 
           <main className="border-t-2 border-black bg-[#b19cd9] p-4 sm:p-6">
-            <Link href="/">
-              <Button variant="ghost" size="sm" className="mb-6 !bg-white/80">
+            <Button asChild variant="ghost" size="sm" className="mb-6 !bg-white/80">
+              <Link href="/">
                 ← Volver
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
             <Text
               as="h1"
@@ -111,11 +121,17 @@ export default function SobrePage() {
 
             <nav className="mb-8 flex flex-wrap gap-2">
               {sections.map((section) => (
-                <a key={section.id} href={`#${section.id}`} className="inline-block">
-                  <Button variant="outline" size="sm" className="!bg-white">
+                <Button
+                  key={section.id}
+                  asChild
+                  variant="outline"
+                  size="sm"
+                  className="!bg-white"
+                >
+                  <a href={`#${section.id}`}>
                     {section.title}
-                  </Button>
-                </a>
+                  </a>
+                </Button>
               ))}
             </nav>
 
@@ -148,11 +164,22 @@ export default function SobrePage() {
               })}
             </div>
 
-            <Link href="/" className="mt-8 inline-block">
-              <Button className="!bg-white !text-black hover:!bg-gray-100">
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild className="!bg-white !text-black hover:!bg-gray-100">
+                <Link href="/">
                 Volver al inicio →
+                </Link>
               </Button>
-            </Link>
+              <Button asChild variant="outline" className="!bg-[#ffdb33]">
+                <Link
+                  href={GMAIL_COMPOSE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Escribime por email ↗
+                </Link>
+              </Button>
+            </div>
           </main>
 
           <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">

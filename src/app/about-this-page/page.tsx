@@ -39,10 +39,12 @@ Sombras 3D tipo Win95 (shadow-win95, shadow-win95-inset)`,
     title: "Estructura",
     color: "bg-[#b19cd9]",
     icon: FolderIcon,
-    content: `Página principal con secciones: perfil, backend, frontend, experiencia, educación
-Página Sobre mí con perfil, contacto, habilidades e idiomas
-Blog con rutas dinámicas por sección
-Embed de posts de LinkedIn
+    content: `Portada con propuesta de valor, tecnologías principales y accesos directos
+Sección Trabajos con Olen Market, ccExpedition y Güish en ventanas navegables
+Cards 50/50 con pestañas de descripción e imágenes
+Galerías compactas con carrusel, miniaturas y visualización ampliada
+Casos que muestran el backoffice de Olen y la gestión de Güish mediante Prismic
+Experiencia enterprise, forma de trabajo, contacto y páginas de detalle
 Diseño responsive para móvil y desktop`,
   },
   {
@@ -50,10 +52,13 @@ Diseño responsive para móvil y desktop`,
     title: "Desarrollo",
     color: "bg-[#84e084]",
     icon: CodeIcon,
-    content: `CV interactivo desarrollado como landing personal
-Componentes reutilizables: WindowFrame, RetroIcons, Button, Card
-Integración con WhatsApp (w.app) y LinkedIn embeds
-Optimización de imágenes con Next.js Image`,
+    content: `Arquitectura con Next.js App Router y componentes reutilizables
+Sistema visual compartido: WindowFrame, RetroIcons, Button y Card
+Componente ProjectDetailsTabs para pestañas, carruseles y lightbox
+Sitios reales embebidos en iframes con permisos limitados mediante sandbox
+Navegación accesible por teclado, roles semánticos, estados ARIA y cierre con Escape
+Imágenes optimizadas con Next.js Image y galerías sin deformar las cards
+Enlaces externos a proyectos, Prismic, email, GitHub y repositorio`,
   },
 ];
 
@@ -64,29 +69,30 @@ export default function AboutThisPage() {
         <WindowFrame>
           <WindowTitleBar title="ABOUT THIS PAGE - DESARROLLO">
             <nav className="flex gap-2">
-              <Link href="/">
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
-                >
+              <Button
+                asChild
+                variant="default"
+                size="sm"
+                className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
+              >
+                <Link href="/">
                   HOME
-                </Button>
-              </Link>
-              <Link href="/sobre">
-                <Button variant="outline" size="sm">
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="sm">
+                <Link href="/sobre">
                   Sobre mí
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </nav>
           </WindowTitleBar>
 
           <main className="border-t-2 border-black bg-[#84e084] p-4 sm:p-6">
-            <Link href="/">
-              <Button variant="ghost" size="sm" className="mb-6 !bg-white/80">
+            <Button asChild variant="ghost" size="sm" className="mb-6 !bg-white/80">
+              <Link href="/">
                 ← Volver
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
             <Text
               as="h1"
@@ -105,8 +111,8 @@ export default function AboutThisPage() {
             </Link>
 
             <Text className="mb-8 font-medium text-black">
-              Resumen del desarrollo de esta página web. Stack, diseño y decisiones
-              técnicas.
+              Un portfolio que combina estética retro, contenido profesional y
+              decisiones técnicas modernas.
             </Text>
 
             <div className="space-y-4">

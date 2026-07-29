@@ -1,6 +1,6 @@
 import type { ReactElement } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Button } from "@/components/retroui/Button";
 import { Card } from "@/components/retroui/Card";
 import { Text } from "@/components/retroui/Text";
@@ -16,17 +16,17 @@ const slugConfig: Record<
   string,
   { color: string; bgColor: string; icon: (props: { className?: string }) => ReactElement }
 > = {
-  "bienvenido-al-blog-retro": {
+  backend: {
     color: "bg-[#ff9f7a]",
     bgColor: "bg-[#ff9f7a]",
     icon: CodeIcon,
   },
-  "diseno-neobrutalism": {
+  frontend: {
     color: "bg-[#ffdb33]",
     bgColor: "bg-[#ffdb33]",
     icon: FolderIcon,
   },
-  "retroui-nextjs": {
+  experiencia: {
     color: "bg-[#b19cd9]",
     bgColor: "bg-[#b19cd9]",
     icon: BriefcaseIcon,
@@ -67,13 +67,13 @@ type Post = {
 };
 
 const posts: Record<string, Post> = {
-  "bienvenido-al-blog-retro": {
+  backend: {
     title: "Backend",
     content: "",
     noCard: true,
     structuredLayout: {
       intro:
-        "Experiencia en desarrollo backend para sector bancario y fintech, trabajando en entornos enterprise con equipos internacionales en Accenture.",
+        "Experiencia en desarrollo backend para banca, fintech y productos enterprise, trabajando con equipos internacionales y sistemas de uso crítico.",
       specializations: [
         "Desarrollo de APIs REST seguras y escalables",
         "Integración con sistemas legacy y core bancarios",
@@ -83,12 +83,12 @@ const posts: Record<string, Post> = {
       stack: [
         {
           tech: "C# .NET & SQL Server",
-          description: "Portales bancarios globales (MyT&E)",
+          description: "Plataforma global de operaciones internas",
           period: "2024 - Actualidad",
         },
         {
           tech: "Java & Spring Boot",
-          description: "Microservicios para ICBC y BBVA",
+          description: "Microservicios para instituciones financieras internacionales",
           period: "2022 - 2024",
         },
         {
@@ -126,7 +126,7 @@ const posts: Record<string, Post> = {
       },
     ],
   },
-  "diseno-neobrutalism": {
+  frontend: {
     title: "Frontend",
     content: "",
     noCard: true,
@@ -134,7 +134,7 @@ const posts: Record<string, Post> = {
       intro:
         "Desarrollo de interfaces para portales corporativos y aplicaciones empresariales de uso global.",
       introSecondary:
-        "Actualmente trabajo en el portal interno MyT&E (My Time & Expenses) de Accenture, utilizado por empleados de distintas sedes del mundo para la carga y gestión quincenal de horas.",
+        "Actualmente desarrollo una plataforma interna de alcance global para una empresa de tecnología y consultoría, utilizada por equipos de distintas sedes para gestionar horas y gastos.",
       specializations: [
         "Desarrollo de aplicaciones SPA en Angular",
         "Arquitectura frontend modular y mantenible",
@@ -145,12 +145,12 @@ const posts: Record<string, Post> = {
       stack: [
         {
           tech: "Angular",
-          description: "Portal global MyT&E (Accenture)",
+          description: "Plataforma global de operaciones internas",
           period: "2024 - Actualidad",
         },
         {
-          tech: "Angular (ICBC)",
-          description: "Interfaces para sector bancario",
+          tech: "Angular",
+          description: "Canales digitales para banca empresas",
           period: "2022 - 2023",
         },
         {
@@ -188,7 +188,7 @@ const posts: Record<string, Post> = {
       },
     ],
   },
-  "retroui-nextjs": {
+  experiencia: {
     title: "Experiencia",
     content: "",
     sections: [
@@ -303,19 +303,30 @@ export function generateStaticParams() {
   return Object.keys(posts).map((slug) => ({ slug }));
 }
 
+const legacyRoutes: Record<string, string> = {
+  "bienvenido-al-blog-retro": "backend",
+  "diseno-neobrutalism": "frontend",
+  "retroui-nextjs": "experiencia",
+};
+
 export default async function BlogPost({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+
+  if (legacyRoutes[slug]) {
+    redirect(`/blog/${legacyRoutes[slug]}`);
+  }
+
   const post = posts[slug];
 
   if (!post) {
     notFound();
   }
 
-  const config = slugConfig[slug] || slugConfig["bienvenido-al-blog-retro"];
+  const config = slugConfig[slug] || slugConfig.backend;
   const Icon = config.icon;
 
   return (
@@ -324,24 +335,30 @@ export default async function BlogPost({
         <WindowFrame>
           <WindowTitleBar title={post.title.toUpperCase()}>
             <nav className="flex gap-2">
-              <Link href="/">
-                <Button
-                  variant="default"
-                  size="sm"
-                  className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
-                >
+              <Button
+                asChild
+                variant="default"
+                size="sm"
+                className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
+              >
+                <Link href="/">
                   HOME
-                </Button>
-              </Link>
+                </Link>
+              </Button>
             </nav>
           </WindowTitleBar>
 
           <main className={`border-t-2 border-black p-4 sm:p-6 ${config.bgColor}`}>
-            <Link href="/">
-              <Button variant="ghost" size="sm" className="mb-4 !bg-white/80 sm:mb-6">
+            <Button
+              asChild
+              variant="ghost"
+              size="sm"
+              className="mb-4 !bg-white/80 sm:mb-6"
+            >
+              <Link href="/">
                 ← Volver
-              </Button>
-            </Link>
+              </Link>
+            </Button>
 
             <article>
               <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
@@ -358,15 +375,17 @@ export default async function BlogPost({
                 <>
                   <nav className="mb-6 flex flex-wrap gap-2 sm:mb-8">
                     {post.sections!.map((section) => (
-                      <a
+                      <Button
                         key={section.id}
-                        href={`#${section.id}`}
-                        className="inline-block"
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="!bg-white"
                       >
-                        <Button variant="outline" size="sm" className="!bg-white">
+                        <a href={`#${section.id}`}>
                           {section.title}
-                        </Button>
-                      </a>
+                        </a>
+                      </Button>
                     ))}
                   </nav>
 
@@ -396,6 +415,8 @@ export default async function BlogPost({
                   {post.logos && post.logos.length > 0 && (
                     <div className="flex flex-wrap gap-3 sm:gap-4">
                       {post.logos.map((logo) => (
+                        // Los SVG son badges externos pequeños; no necesitan el optimizador.
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={logo.name}
                           src={logo.src}
@@ -461,6 +482,8 @@ export default async function BlogPost({
                   {post.logos && post.logos.length > 0 && (
                     <div className="mb-6 flex flex-wrap gap-4 sm:mb-8 sm:gap-6">
                       {post.logos.map((logo) => (
+                        // Los SVG son badges externos pequeños; no necesitan el optimizador.
+                        // eslint-disable-next-line @next/next/no-img-element
                         <img
                           key={logo.name}
                           src={logo.src}
