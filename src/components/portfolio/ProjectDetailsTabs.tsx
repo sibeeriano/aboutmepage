@@ -33,6 +33,8 @@ type ProjectDetailsTabsProps = {
   projectName: string;
   badge?: string;
   badgeClassName?: string;
+  secondaryBadge?: string;
+  secondaryBadgeClassName?: string;
   category: string;
   title: string;
   tagline?: string;
@@ -50,6 +52,8 @@ export function ProjectDetailsTabs({
   projectName,
   badge,
   badgeClassName = "bg-[#ffdb33]",
+  secondaryBadge,
+  secondaryBadgeClassName = "bg-[#84e084]",
   category,
   title,
   tagline,
@@ -172,10 +176,19 @@ export function ProjectDetailsTabs({
           className="flex-1 p-5 sm:p-7 lg:p-9"
         >
           {badge && (
-            <div
-              className={`mb-4 inline-block border-2 border-black px-2 py-1 font-mono text-[10px] font-bold uppercase shadow-win95 ${badgeClassName}`}
-            >
-              {badge}
+            <div className="mb-4 flex flex-wrap gap-2">
+              <span
+                className={`border-2 border-black px-2 py-1 font-mono text-[10px] font-bold uppercase shadow-win95 ${badgeClassName}`}
+              >
+                {badge}
+              </span>
+              {secondaryBadge && (
+                <span
+                  className={`border-2 border-black px-2 py-1 font-mono text-[10px] font-bold uppercase shadow-win95 ${secondaryBadgeClassName}`}
+                >
+                  {secondaryBadge}
+                </span>
+              )}
             </div>
           )}
           <Text className="font-mono text-xs font-bold uppercase tracking-widest text-[#00695c]">

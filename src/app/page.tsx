@@ -4,6 +4,8 @@ import { Card } from "@/components/retroui/Card";
 import { Text } from "@/components/retroui/Text";
 import { WindowFrame, WindowTitleBar } from "@/components/retro/WindowFrame";
 import { ProjectDetailsTabs } from "@/components/portfolio/ProjectDetailsTabs";
+import { CollapsibleProject } from "@/components/portfolio/CollapsibleProject";
+import { CollapsibleSection } from "@/components/portfolio/CollapsibleSection";
 import { ProfileImageStack } from "@/components/portfolio/ProfileImageStack";
 import {
   BriefcaseIcon,
@@ -122,31 +124,26 @@ export default function Home() {
           <main id="top" className="border-t-2 border-black bg-[#ff9f7a]">
             <section className="grid items-center gap-8 p-5 sm:p-8 lg:grid-cols-[1.4fr_0.6fr] lg:gap-12 lg:p-12">
               <div>
-                <div className="mb-5 inline-flex items-center gap-2 border-2 border-black bg-[#84e084] px-3 py-1 shadow-win95">
-                  <span
-                    className="size-2.5 animate-pulse rounded-full border border-black bg-[#00695c]"
-                    aria-hidden="true"
-                  />
-                  <span className="font-head text-xs font-bold uppercase tracking-wide">
-                    Portfolio 2026
-                  </span>
-                </div>
-
                 <Text
                   as="h1"
                   className="max-w-3xl text-3xl leading-[1.05] font-bold text-white drop-shadow-[3px_3px_0_#000] sm:text-5xl lg:text-6xl"
                 >
-                  Construyo software confiable para operaciones reales.
+                  Tus ideas hechas realidad, personalizables sin que toques código.
                 </Text>
 
                 <Text className="mt-6 max-w-2xl text-base leading-relaxed font-semibold text-black sm:text-xl">
-                  Soy Facundo Vara, Software Engineer. Transformo necesidades de
-                  negocio en productos web, integraciones y herramientas que los
-                  equipos pueden usar y mantener.
+                  Soy facu, Software engineer en Sib.dev. Escucho tus ideas y las
+                  hago realidad en una web o aplicación.
                 </Text>
 
                 <div className="mt-5 flex flex-wrap gap-2" aria-label="Tecnologías principales">
-                  {["Angular", "C# .NET", "Java", "Next.js", "SQL"].map((item) => (
+                  {[
+                    "Landing pages",
+                    "Tiendas online",
+                    "Catálogos digitales",
+                    "Webs con IA",
+                    "Sistemas a medida",
+                  ].map((item) => (
                     <span
                       key={item}
                       className="border-2 border-black bg-white px-2.5 py-1 font-mono text-xs font-bold shadow-win95-inset sm:text-sm"
@@ -189,26 +186,19 @@ export default function Home() {
               ))}
             </section>
 
-            <section id="trabajo" className="scroll-mt-24 bg-[#ffdb33] p-5 sm:p-8 lg:p-12">
-              <div className="mb-6 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
-                <div>
-                  <Text className="font-mono text-xs font-bold uppercase tracking-widest text-black/70">
-                    01 / Trabajo destacado
-                  </Text>
-                  <Text
-                    as="h2"
-                    className="mt-1 text-2xl font-bold text-white drop-shadow-[3px_3px_0_#000] sm:text-4xl"
-                  >
-                    La visión del cliente hecha realidad
-                  </Text>
-                </div>
-                <span className="w-fit border-2 border-black bg-white px-3 py-1 font-mono text-xs font-bold shadow-win95">
-                  3 PROYECTOS ONLINE
-                </span>
-              </div>
-
+            <CollapsibleSection
+              id="trabajo"
+              indexLabel="01 / Trabajo destacado"
+              title="La visión del cliente hecha realidad"
+              backgroundClassName="bg-[#ffdb33]"
+              badge="3 PROYECTOS ONLINE"
+              withTopBorder={false}
+            >
               <div className="space-y-8">
-                <Card className="grid overflow-hidden !p-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                <CollapsibleProject
+                  title="Olen Market"
+                  subtitle="E-commerce · Panel administrativo"
+                >
                   <div className="border-b-2 border-black bg-[#ff9f7a] p-4 sm:p-6 lg:border-r-2 lg:border-b-0">
                     <div className="border-2 border-black bg-white shadow-win95-lg">
                       <div className="flex items-center gap-2 border-b-2 border-black bg-[#c0c0c0] px-3 py-2">
@@ -254,7 +244,7 @@ export default function Home() {
                     badgeClassName="bg-[#84e084]"
                     category="Marketplace · E-commerce + panel administrativo"
                     title="Olen Market"
-                    description="Marketplace de productos naturales orientados al rendimiento humano. Desarrollé tanto la experiencia pública de compra como un panel administrativo para gestionar el negocio completo."
+                    description="E-commerce de productos naturales orientados al rendimiento deportivo saludable. Desarrollé tanto la experiencia pública de compra como un panel administrativo para gestionar el negocio completo."
                     details={[
                       {
                         label: "Mi aporte",
@@ -302,9 +292,12 @@ export default function Home() {
                     href="https://www.olenmarket.com/"
                     ctaLabel="Visitar marketplace"
                   />
-                </Card>
+                </CollapsibleProject>
 
-                <Card className="grid overflow-hidden !p-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                <CollapsibleProject
+                  title="ccExpedition"
+                  subtitle="Finanzas personales · PWA"
+                >
                   <div className="border-b-2 border-black bg-[#b19cd9] p-4 sm:p-6 lg:border-r-2 lg:border-b-0">
                     <div className="border-2 border-black bg-white shadow-win95-lg">
                       <div className="flex items-center gap-2 border-b-2 border-black bg-[#c0c0c0] px-3 py-2">
@@ -346,21 +339,23 @@ export default function Home() {
 
                   <ProjectDetailsTabs
                     projectName="ccExpedition"
-                    badge="Producto propio · Beta privada"
+                    badge="Finanzas"
                     badgeClassName="bg-[#ffdb33]"
+                    secondaryBadge="Beta Abierta Gratis"
+                    secondaryBadgeClassName="bg-[#84e084]"
                     category="Web app · Finanzas personales · PWA"
                     title="ccExpedition"
-                    tagline="Proyectá tus tarjetas antes de sacarlas."
-                    description="Aplicación para controlar gastos con tarjeta, proyectar cuotas y simular compras futuras. Permite recorrer los próximos resúmenes antes de comprometerse y tomar decisiones con más claridad."
+                    tagline="Controla tus gastos mensuales y especula con los gastos futuros."
+                    description="Aplicación para controlar gastos mensuales y gastos fijos, como tarjetas, alquileres, préstamos, etc., a futuro. Permite proyectar cuotas y simular compras futuras, recorrer los próximos resúmenes antes de comprometerse y tomar decisiones con más claridad."
                     details={[
                       {
                         label: "Experiencia de producto",
-                        text: "Gestión multi-tarjeta, dashboard mensual, límites con alertas y conversión USD→ARS con cotización en tiempo real.",
+                        text: "Gestión multi gastos del tipo grilla, dashboard mensual, categorías, personalización, límites con alertas y conversión USD→ARS con cotización en tiempo real.",
                         color: "#ff9f7a",
                       },
                       {
                         label: "Mi aporte",
-                        text: "Diseño UX/UI, frontend, integración con Supabase, copy e identidad visual.",
+                        text: "Diseño UX/UI, frontend, integración con Supabase, identidad visual, dominio, deploy y lógica de comportamiento de gastos en la grilla principal.",
                         color: "#b19cd9",
                       },
                       {
@@ -419,9 +414,12 @@ export default function Home() {
                     href="https://ccexpedition.com/"
                     ctaLabel="Explorar ccExpedition"
                   />
-                </Card>
+                </CollapsibleProject>
 
-              <Card className="grid overflow-hidden !p-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+              <CollapsibleProject
+                title="Güish"
+                subtitle="Landing page · CMS administrable"
+              >
                 <div className="border-b-2 border-black bg-[#00695c] p-4 sm:p-6 lg:border-r-2 lg:border-b-0">
                   <div className="border-2 border-black bg-[#f7f0df] shadow-win95-lg">
                     <div className="flex items-center gap-2 border-b-2 border-black bg-[#c0c0c0] px-3 py-2">
@@ -465,7 +463,7 @@ export default function Home() {
                   projectName="Güish"
                   category="Sitio institucional · CMS administrable · Desarrollo end-to-end"
                   title="Güish"
-                  description="Sitio corporativo para una empresa mexicana que acompaña a marcas en marketplaces. Está integrado con Prismic para que el cliente pueda reorganizar secciones y actualizar textos e imágenes de forma autónoma, sin depender de desarrollo."
+                  description="Sitio del tipo LandingPage para Güish, empresa mexicana que acompaña a marcas en marketplaces. Está integrado con Prismic para que el cliente pueda reorganizar secciones y actualizar textos e imágenes de forma autónoma, sin depender de desarrollo."
                   referenceLink={{
                     brand: "prismic",
                     label: "CMS administrable",
@@ -508,24 +506,17 @@ export default function Home() {
                   href="https://www.guish.com.mx/"
                   ctaLabel="Visitar proyecto"
                 />
-              </Card>
+              </CollapsibleProject>
               </div>
-            </section>
+            </CollapsibleSection>
 
-            <section
+            <CollapsibleSection
               id="experiencia"
-              className="scroll-mt-24 border-t-2 border-black bg-[#b19cd9] p-5 sm:p-8 lg:p-12"
+              indexLabel="02 / Experiencia enterprise"
+              title="Experiencia en banca, fintech y productos enterprise"
+              backgroundClassName="bg-[#b19cd9]"
             >
-              <Text className="font-mono text-xs font-bold uppercase tracking-widest text-black/70">
-                02 / Experiencia enterprise
-              </Text>
-              <Text
-                as="h2"
-                className="mt-1 text-2xl font-bold text-white drop-shadow-[3px_3px_0_#000] sm:text-4xl"
-              >
-                Experiencia en banca, fintech y productos enterprise
-              </Text>
-              <Text className="mt-4 max-w-3xl leading-relaxed font-medium text-black">
+              <Text className="max-w-3xl leading-relaxed font-medium text-black">
                 Mi trabajo profesional incluye sistemas internos y bancarios
                 privados. Estos son los contextos, el alcance y las tecnologías
                 con las que tengo experiencia.
@@ -564,27 +555,22 @@ export default function Home() {
                   <Link href="/blog/frontend">Ver experiencia frontend →</Link>
                 </Button>
               </div>
-            </section>
+            </CollapsibleSection>
 
-            <section className="border-t-2 border-black bg-[#84e084] p-5 sm:p-8 lg:p-12">
-              <Text className="font-mono text-xs font-bold uppercase tracking-widest text-black/70">
-                03 / Cómo trabajo
-              </Text>
-              <Text
-                as="h2"
-                className="mt-1 text-2xl font-bold text-white drop-shadow-[3px_3px_0_#000] sm:text-4xl"
-              >
-                Tu visión hecha realidad
-              </Text>
-
-              <div className="mt-7 grid gap-4 md:grid-cols-3">
+            <CollapsibleSection
+              id="como-trabajo"
+              indexLabel="03 / Cómo trabajo"
+              title="Tu visión hecha realidad"
+              backgroundClassName="bg-[#84e084]"
+            >
+              <div className="grid gap-4 md:grid-cols-3">
                 {workflowSteps.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Card key={item.title} className={item.color}>
                       <div className="flex items-start justify-between gap-4">
                         <Icon className="size-12 text-[#ffdb33] drop-shadow-[2px_2px_0_#000]" />
-                        <span className="border-2 border-black bg-white px-2 py-1 font-mono text-xs font-bold shadow-win95">
+                        <span className="border-2 border-black bg-white px-2 py-1 font-mono text-xs font-bold text-black shadow-win95">
                           {item.step}
                         </span>
                       </div>
@@ -615,24 +601,19 @@ export default function Home() {
                   ))}
                 </div>
               </div>
-            </section>
+            </CollapsibleSection>
 
-            <section
+            <CollapsibleSection
               id="contacto"
-              className="scroll-mt-24 border-t-2 border-black bg-[#00695c] p-5 text-white sm:p-8 lg:p-12"
+              indexLabel="04 / Contacto"
+              title="¿Buscás alguien que entienda tanto el código como el contexto?"
+              backgroundClassName="bg-[#00695c] text-white"
+              accentClassName="text-[#84e084]"
+              titleClassName="max-w-3xl text-3xl sm:text-5xl"
             >
               <div className="grid items-center gap-7 lg:grid-cols-[1fr_auto]">
                 <div>
-                  <Text className="font-mono text-xs font-bold uppercase tracking-widest text-[#84e084]">
-                    04 / Contacto
-                  </Text>
-                  <Text
-                    as="h2"
-                    className="mt-2 max-w-3xl text-3xl font-bold text-white drop-shadow-[3px_3px_0_#000] sm:text-5xl"
-                  >
-                    ¿Buscás alguien que entienda tanto el código como el contexto?
-                  </Text>
-                  <Text className="mt-4 max-w-2xl leading-relaxed font-medium text-white/90">
+                  <Text className="max-w-2xl leading-relaxed font-medium text-white/90">
                     Podemos hablar sobre una oportunidad, un producto o un desafío
                     técnico. Contame qué necesitás construir.
                   </Text>
@@ -660,7 +641,7 @@ export default function Home() {
                   </Button>
                 </div>
               </div>
-            </section>
+            </CollapsibleSection>
           </main>
 
           <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
