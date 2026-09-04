@@ -23,9 +23,9 @@ export function WindowTitleBar({
       <div className="flex min-w-0 items-center justify-end gap-2">
         <span className="truncate font-head text-xs font-bold sm:text-sm">{title}</span>
         <div className="flex shrink-0 gap-1">
-          <span className="size-3 rounded-sm border border-black bg-[#00ed64]" />
-          <span className="size-3 rounded-sm border border-black bg-[#c8f6e4]" />
-          <span className="size-3 rounded-sm border border-black bg-[#e3fcf7]" />
+          <span className="size-3 rounded-none border border-black bg-[#00ed64]" />
+          <span className="size-3 rounded-none border border-black bg-[#c8f6e4]" />
+          <span className="size-3 rounded-none border border-black bg-[#e3fcf7]" />
         </div>
       </div>
     </div>

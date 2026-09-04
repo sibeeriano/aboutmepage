@@ -422,12 +422,12 @@ export default async function BlogPost({
                           src={logo.src}
                           alt={logo.name}
                           title={logo.name}
-                          className="size-10 rounded border-2 border-black bg-white p-1.5 shadow-win95 sm:size-12"
+                          className="size-10 rounded-none border-2 border-black bg-white p-1.5 shadow-win95 sm:size-12"
                         />
                       ))}
                     </div>
                   )}
-                  <div className="rounded-sm border-2 border-black bg-white/90 p-4 shadow-win95-inset">
+                  <div className="rounded-none border-2 border-black bg-white/90 p-4 shadow-win95-inset">
                     <p className="font-sans text-base leading-relaxed font-medium text-black">
                       {post.structuredLayout.intro}
                     </p>
@@ -489,7 +489,7 @@ export default async function BlogPost({
                           src={logo.src}
                           alt={logo.name}
                           title={logo.name}
-                          className="size-12 rounded border-2 border-black bg-white p-1.5 shadow-win95 sm:size-16 md:size-20"
+                          className="size-12 rounded-none border-2 border-black bg-white p-1.5 shadow-win95 sm:size-16 md:size-20"
                         />
                       ))}
                     </div>

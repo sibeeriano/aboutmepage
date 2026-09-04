@@ -162,7 +162,7 @@ export function ProjectDetailsTabs({
           tabIndex={activeTab === "description" ? 0 : -1}
           onClick={() => setActiveTab("description")}
           onKeyDown={handleTabKeyDown}
-          className={`relative -mb-0.5 min-w-0 flex-1 border-2 border-black px-2 py-2 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
+          className={`relative -mb-0.5 min-w-0 flex-1 border-2 border-black px-2 py-3 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
             activeTab === "description"
               ? "z-10 border-b-white bg-white shadow-win95"
               : "bg-[#e3fcf7] hover:bg-white"
@@ -179,7 +179,7 @@ export function ProjectDetailsTabs({
           tabIndex={activeTab === "images" ? 0 : -1}
           onClick={() => setActiveTab("images")}
           onKeyDown={handleTabKeyDown}
-          className={`relative -mb-0.5 ml-1 min-w-0 flex-1 border-2 border-black px-2 py-2 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
+          className={`relative -mb-0.5 ml-1 min-w-0 flex-1 border-2 border-black px-2 py-3 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
             activeTab === "images"
               ? "z-10 border-b-white bg-white shadow-win95"
               : "bg-[#e3fcf7] hover:bg-white"
@@ -200,7 +200,7 @@ export function ProjectDetailsTabs({
             tabIndex={activeTab === "graphic-design" ? 0 : -1}
             onClick={() => setActiveTab("graphic-design")}
             onKeyDown={handleTabKeyDown}
-            className={`relative -mb-0.5 ml-1 min-w-0 flex-1 border-2 border-black px-2 py-2 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
+            className={`relative -mb-0.5 ml-1 min-w-0 flex-1 border-2 border-black px-2 py-3 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
               activeTab === "graphic-design"
                 ? "z-10 border-b-white bg-white shadow-win95"
                 : "bg-[#e3fcf7] hover:bg-white"
@@ -234,7 +234,7 @@ export function ProjectDetailsTabs({
               )}
             </div>
           )}
-          <Text className="font-mono text-xs font-bold uppercase tracking-widest text-[#00684a]">
+          <Text className="w-fit border-2 border-black bg-[#00ed64] px-2 py-1 font-mono text-xs font-bold uppercase tracking-widest text-black shadow-win95">
             {category}
           </Text>
           <Text as="h3" className="mt-2 text-2xl font-bold sm:text-3xl">

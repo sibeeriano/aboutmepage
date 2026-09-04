@@ -113,7 +113,7 @@ export function CollapsibleProject({
                 autoFocus
                 onClick={closeWindow}
                 aria-label={`Cerrar información de ${title}`}
-                className="grid size-8 shrink-0 place-items-center border-2 border-black bg-white font-head text-lg font-bold text-black shadow-win95 transition hover:bg-[#00ed64] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+                className="grid size-9 shrink-0 place-items-center border-2 border-black bg-white font-head text-lg font-bold text-black shadow-win95 transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:bg-[#00ed64] hover:shadow-win95-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
               >
                 ×
               </button>

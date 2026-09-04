@@ -744,7 +744,7 @@ export default function Home() {
             >
               <div className="grid items-center gap-7 lg:grid-cols-[1fr_auto]">
                 <div>
-                  <Text className="max-w-2xl leading-relaxed font-medium text-white/90">
+                  <Text className="max-w-2xl text-base font-semibold leading-relaxed text-white sm:text-lg">
                     Podemos hablar sobre una oportunidad, un producto o un desafío
                     técnico. Contame qué necesitás construir.
                   </Text>
