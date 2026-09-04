@@ -32,10 +32,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "sib.dev",
   description:
-    "Portfolio de Facundo Vara, Software Engineer especializado en productos web, sistemas enterprise e integraciones para banca y fintech.",
+    "Portfolio de Facundo Vara, Software Engineer y Graphic Designer especializado en productos digitales, sistemas enterprise e identidad visual.",
   keywords: [
     "Software Engineer",
     "Full Stack Developer",
+    "Graphic Designer",
     "Angular",
     "C# .NET",
     "Java",
@@ -47,21 +48,21 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "es_AR",
-    title: "Facundo Vara | Software Engineer",
-    description: "Software confiable para operaciones reales.",
+    title: "Facundo Vara | Software Engineer & Graphic Designer",
+    description: "Software y diseño confiable para operaciones reales.",
     images: [
       {
         url: "/og.png",
         width: 1731,
         height: 909,
-        alt: "Portfolio de Facundo Vara, Software Engineer",
+        alt: "Portfolio de Facundo Vara, Software Engineer y Graphic Designer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Facundo Vara | Software Engineer",
-    description: "Software confiable para operaciones reales.",
+    title: "Facundo Vara | Software Engineer & Graphic Designer",
+    description: "Software y diseño confiable para operaciones reales.",
     images: ["/og.png"],
   },
   robots: {
