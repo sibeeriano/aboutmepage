@@ -33,7 +33,7 @@ const slugConfig: Record<
   },
   educacion: {
     color: "bg-[#78e8b3]",
-    bgColor: "bg-[#78e8b3]",
+    bgColor: "bg-white",
     icon: GraduationIcon,
   },
 };
@@ -251,18 +251,21 @@ Stack: Javascript, Node, Express, SQL, HTML, CSS, Bootstrap.`,
     content: "",
     sections: [
       {
+        id: "educacion-2",
+        title: "Licenciatura en Sistemas",
+        content: `Universidad de Lanús`,
+      },
+      {
+        id: "educacion-5",
+        title: "Licenciatura en Diseño y Comunicación Visual",
+        content: `Universidad de Lanús`,
+      },
+      {
         id: "educacion-1",
         title: "Certificaciones",
         content: `Cloud Native College Accenture · 2025
 
 Angular Associate Developer.`,
-      },
-      {
-        id: "educacion-2",
-        title: "Licenciatura en Sistemas",
-        content: `Universidad de Lanús · Marzo 2024 - En curso
-
-Carrera en progreso.`,
       },
       {
         id: "educacion-3",
@@ -274,16 +277,9 @@ Formación intensiva en Java.`,
       {
         id: "educacion-4",
         title: "Programador Web FULL STACK",
-        content: `Digital House · Mayo - Noviembre 2020
+        content: `Digital House
 
 Curso finalizado. Desarrollo web full stack.`,
-      },
-      {
-        id: "educacion-5",
-        title: "Licenciatura en Diseño y Comunicación Visual",
-        content: `Universidad de Lanús · Marzo 2014 - 2017
-
-Incompleto.`,
       },
       {
         id: "educacion-6",
@@ -328,9 +324,13 @@ export default async function BlogPost({
 
   const config = slugConfig[slug] || slugConfig.backend;
   const Icon = config.icon;
+  const isEducation = slug === "educacion";
 
   return (
-    <div id="top" className="min-h-screen bg-[#d8eee5] p-2 sm:p-4">
+    <div
+      id="top"
+      className={`min-h-screen p-2 sm:p-4 ${isEducation ? "bg-white" : "bg-[#d8eee5]"}`}
+    >
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title={post.title.toUpperCase()}>
@@ -365,7 +365,7 @@ export default async function BlogPost({
                 <Icon className="size-12 text-[#00ed64] drop-shadow-[2px_2px_0_#000] sm:size-16" />
                 <Text
                   as="h1"
-                  className="font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
+                  className={`font-head text-xl font-bold sm:text-2xl ${isEducation ? "text-[#001e2b]" : "text-white drop-shadow-[2px_2px_0_#000]"}`}
                 >
                   {post.title}
                 </Text>
@@ -380,7 +380,11 @@ export default async function BlogPost({
                         asChild
                         variant="outline"
                         size="sm"
-                        className="!bg-white"
+                        className={
+                          isEducation
+                            ? "!bg-[#00ed64] !text-[#001e2b] hover:!bg-[#c8f6e4]"
+                            : "!bg-white"
+                        }
                       >
                         <a href={`#${section.id}`}>
                           {section.title}
@@ -510,7 +514,9 @@ export default async function BlogPost({
             </article>
           </main>
 
-          <footer className="border-t-2 border-black bg-[#d8eee5] px-4 py-4 shadow-win95-inset sm:px-6">
+          <footer
+            className={`border-t-2 border-black px-4 py-4 shadow-win95-inset sm:px-6 ${isEducation ? "bg-[#d1d5db]" : "bg-[#d8eee5]"}`}
+          >
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-center">
               <Text className="text-sm font-medium text-black sm:text-base">
                 © 2026 Facundo Gabriel Vara

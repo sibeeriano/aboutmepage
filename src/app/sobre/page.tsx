@@ -114,9 +114,9 @@ export default function SobrePage() {
 
             <Text
               as="h1"
-              className="mb-6 font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
+              className="mb-6 font-head text-xl font-bold text-[#001e2b] sm:text-2xl"
             >
-              SOBRE MÍ
+              Sobre mí
             </Text>
 
             <nav className="mb-8 flex flex-wrap gap-2">

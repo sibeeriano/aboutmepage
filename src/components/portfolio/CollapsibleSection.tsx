@@ -12,6 +12,7 @@ type CollapsibleSectionProps = {
   accentClassName?: string;
   badge?: string;
   titleClassName?: string;
+  controlClassName?: string;
   withTopBorder?: boolean;
   children: ReactNode;
 };
@@ -24,6 +25,7 @@ export function CollapsibleSection({
   accentClassName = "text-black/70",
   badge,
   titleClassName,
+  controlClassName = "bg-white",
   withTopBorder = true,
   children,
 }: CollapsibleSectionProps) {
@@ -98,11 +100,21 @@ export function CollapsibleSection({
 
           <span className="flex w-full shrink-0 items-center gap-2">
             {badge && (
-              <span className="hidden border-2 border-black bg-white px-3 py-1 font-mono text-xs font-bold shadow-win95 sm:inline-block">
+              <span
+                className={cn(
+                  "hidden border-2 border-black px-3 py-1 font-mono text-xs font-bold shadow-win95 sm:inline-block",
+                  controlClassName,
+                )}
+              >
                 {badge}
               </span>
             )}
-            <span className="ml-auto border-2 border-black bg-white px-3 py-2 font-mono text-[10px] font-bold text-black shadow-win95 transition group-hover/section:bg-[#e3fcf7] sm:text-xs">
+            <span
+              className={cn(
+                "ml-auto border-2 border-black px-3 py-2 font-mono text-[10px] font-bold text-black shadow-win95 transition group-hover/section:bg-[#e3fcf7] sm:text-xs",
+                controlClassName,
+              )}
+            >
               <span className="group-open/section:hidden">EXPANDIR ↓</span>
               <span className="hidden group-open/section:inline">CONTRAER ↑</span>
             </span>

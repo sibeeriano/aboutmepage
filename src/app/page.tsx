@@ -187,7 +187,7 @@ export default function Home() {
 
             <section
               aria-label="Acceso a proyectos destacados"
-              className="border-b-2 border-black bg-white px-5 py-8 sm:px-8 sm:py-10 lg:px-12"
+              className="border-b-2 border-black bg-[#00684a] px-5 py-8 sm:px-8 sm:py-10 lg:px-12"
             >
               <Button asChild size="lg" className="justify-center !bg-[#00ed64] !text-black">
                 <a href="#trabajo">Proyectos destacados ↓</a>
@@ -198,8 +198,9 @@ export default function Home() {
               id="trabajo"
               indexLabel="01 / Trabajo destacado"
               title="La visión del cliente hecha realidad"
-              backgroundClassName="bg-[#00ed64]"
+              backgroundClassName="bg-white"
               badge="4 PROYECTOS"
+              controlClassName="bg-[#00ed64]"
               withTopBorder={false}
             >
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -274,14 +275,29 @@ export default function Home() {
                   ]}
                   images={[
                     {
-                      src: "/projects/gallatrack-profile.png",
-                      alt: "Presentación visual de GallaTrack con un camión en ruta",
-                      caption: "Identidad principal",
+                      src: "/projects/galla1.png",
+                      alt: "Galería de GallaTrack, imagen 1",
+                      caption: "GallaTrack - Home modo claro",
                     },
                     {
-                      src: "/projects/gallatrack-whatsapp-business.png",
-                      alt: "Símbolo de GallaTrack para perfiles digitales",
-                      caption: "Ícono de marca",
+                      src: "/projects/galla2.png",
+                      alt: "Galería de GallaTrack, imagen 2",
+                      caption: "GallaTrack - Home modo oscuro",
+                    },
+                    {
+                      src: "/projects/galla3.png",
+                      alt: "Galería de GallaTrack, imagen 3",
+                      caption: "GallaTrack - Vista general de catálogo",
+                    },
+                    {
+                      src: "/projects/galla4.png",
+                      alt: "Galería de GallaTrack, imagen 4",
+                      caption: "GallaTrack - Vista producto",
+                    },
+                    {
+                      src: "/projects/galla5.png",
+                      alt: "Galería de GallaTrack, imagen 5",
+                      caption: "GallaTrack - Panel admin detallado",
                     },
                   ]}
                   graphicDesign={{
