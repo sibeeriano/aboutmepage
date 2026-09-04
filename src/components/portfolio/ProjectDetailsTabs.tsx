@@ -7,6 +7,7 @@ import {
   useId,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
+  type ReactNode,
 } from "react";
 import { Button } from "@/components/retroui/Button";
 import { Text } from "@/components/retroui/Text";
@@ -29,6 +30,18 @@ type ProjectReferenceLink = {
   href: string;
 };
 
+type GraphicDesignItem = {
+  title: string;
+  description: string;
+};
+
+type GraphicDesignShowcase = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  items: GraphicDesignItem[];
+};
+
 type ProjectDetailsTabsProps = {
   projectName: string;
   badge?: string;
@@ -42,18 +55,19 @@ type ProjectDetailsTabsProps = {
   details: ProjectDetail[];
   referenceLink?: ProjectReferenceLink;
   images: ProjectImage[];
-  href: string;
-  ctaLabel: string;
+  graphicDesign?: GraphicDesignShowcase;
+  href?: string;
+  ctaLabel?: ReactNode;
 };
 
-type TabName = "description" | "images";
+type TabName = "description" | "images" | "graphic-design";
 
 export function ProjectDetailsTabs({
   projectName,
   badge,
-  badgeClassName = "bg-[#ffdb33]",
+  badgeClassName = "bg-[#00ed64]",
   secondaryBadge,
-  secondaryBadgeClassName = "bg-[#84e084]",
+  secondaryBadgeClassName = "bg-[#78e8b3]",
   category,
   title,
   tagline,
@@ -61,6 +75,7 @@ export function ProjectDetailsTabs({
   details,
   referenceLink,
   images,
+  graphicDesign,
   href,
   ctaLabel,
 }: ProjectDetailsTabsProps) {
@@ -70,13 +85,22 @@ export function ProjectDetailsTabs({
   const baseId = useId();
   const descriptionTabId = `${baseId}-description-tab`;
   const imagesTabId = `${baseId}-images-tab`;
+  const graphicDesignTabId = `${baseId}-graphic-design-tab`;
   const descriptionPanelId = `${baseId}-description-panel`;
   const imagesPanelId = `${baseId}-images-panel`;
+  const graphicDesignPanelId = `${baseId}-graphic-design-panel`;
+  const availableTabs: TabName[] = graphicDesign
+    ? ["description", "images", "graphic-design"]
+    : ["description", "images"];
 
   const handleTabKeyDown = (event: ReactKeyboardEvent<HTMLButtonElement>) => {
     if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
       event.preventDefault();
-      setActiveTab(activeTab === "description" ? "images" : "description");
+      const currentIndex = availableTabs.indexOf(activeTab);
+      const direction = event.key === "ArrowRight" ? 1 : -1;
+      const nextIndex =
+        (currentIndex + direction + availableTabs.length) % availableTabs.length;
+      setActiveTab(availableTabs[nextIndex]);
     }
   };
 
@@ -123,11 +147,11 @@ export function ProjectDetailsTabs({
   }, [images.length, isLightboxOpen]);
 
   return (
-    <div className="flex min-h-full min-w-0 flex-col bg-white">
+    <div className="flex h-full min-h-0 min-w-0 flex-col bg-white">
       <div
         role="tablist"
         aria-label={`Contenido del proyecto ${projectName}`}
-        className="flex border-b-2 border-black bg-[#c0c0c0] px-2 pt-2"
+        className="flex shrink-0 border-b-2 border-black bg-[#d8eee5] px-2 pt-2"
       >
         <button
           id={descriptionTabId}
@@ -138,10 +162,10 @@ export function ProjectDetailsTabs({
           tabIndex={activeTab === "description" ? 0 : -1}
           onClick={() => setActiveTab("description")}
           onKeyDown={handleTabKeyDown}
-          className={`relative -mb-0.5 border-2 border-black px-3 py-2 font-head text-xs font-bold transition sm:px-4 sm:text-sm ${
+          className={`relative -mb-0.5 min-w-0 flex-1 border-2 border-black px-2 py-2 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
             activeTab === "description"
               ? "z-10 border-b-white bg-white shadow-win95"
-              : "bg-[#d8d8d8] hover:bg-white"
+              : "bg-[#e3fcf7] hover:bg-white"
           }`}
         >
           Descripción
@@ -155,17 +179,36 @@ export function ProjectDetailsTabs({
           tabIndex={activeTab === "images" ? 0 : -1}
           onClick={() => setActiveTab("images")}
           onKeyDown={handleTabKeyDown}
-          className={`relative -mb-0.5 ml-1 border-2 border-black px-3 py-2 font-head text-xs font-bold transition sm:px-4 sm:text-sm ${
+          className={`relative -mb-0.5 ml-1 min-w-0 flex-1 border-2 border-black px-2 py-2 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
             activeTab === "images"
               ? "z-10 border-b-white bg-white shadow-win95"
-              : "bg-[#d8d8d8] hover:bg-white"
+              : "bg-[#e3fcf7] hover:bg-white"
           }`}
         >
           Imágenes
-          <span className="ml-1.5 border border-black bg-[#ffdb33] px-1 font-mono text-[10px]">
+          <span className="ml-1.5 border border-black bg-[#00ed64] px-1 font-mono text-[10px]">
             {images.length}
           </span>
         </button>
+        {graphicDesign && (
+          <button
+            id={graphicDesignTabId}
+            type="button"
+            role="tab"
+            aria-selected={activeTab === "graphic-design"}
+            aria-controls={graphicDesignPanelId}
+            tabIndex={activeTab === "graphic-design" ? 0 : -1}
+            onClick={() => setActiveTab("graphic-design")}
+            onKeyDown={handleTabKeyDown}
+            className={`relative -mb-0.5 ml-1 min-w-0 flex-1 border-2 border-black px-2 py-2 font-head text-xs font-bold whitespace-nowrap transition sm:px-4 sm:text-sm ${
+              activeTab === "graphic-design"
+                ? "z-10 border-b-white bg-white shadow-win95"
+                : "bg-[#e3fcf7] hover:bg-white"
+            }`}
+          >
+            Diseño gráfico
+          </button>
+        )}
       </div>
 
       {activeTab === "description" ? (
@@ -173,7 +216,7 @@ export function ProjectDetailsTabs({
           id={descriptionPanelId}
           role="tabpanel"
           aria-labelledby={descriptionTabId}
-          className="flex-1 p-5 sm:p-7 lg:p-9"
+          className="flex min-h-0 flex-1 flex-col overflow-y-auto p-5 sm:p-7 lg:p-9"
         >
           {badge && (
             <div className="mb-4 flex flex-wrap gap-2">
@@ -191,14 +234,14 @@ export function ProjectDetailsTabs({
               )}
             </div>
           )}
-          <Text className="font-mono text-xs font-bold uppercase tracking-widest text-[#00695c]">
+          <Text className="font-mono text-xs font-bold uppercase tracking-widest text-[#00684a]">
             {category}
           </Text>
           <Text as="h3" className="mt-2 text-2xl font-bold sm:text-3xl">
             {title}
           </Text>
           {tagline && (
-            <Text className="mt-2 font-head text-base font-bold text-[#00695c]">
+            <Text className="mt-2 font-head text-base font-bold text-[#00684a]">
               {tagline}
             </Text>
           )}
@@ -211,12 +254,12 @@ export function ProjectDetailsTabs({
               href={referenceLink.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 flex w-fit items-center gap-3 border-2 border-black bg-white px-3 py-2 shadow-win95 transition hover:-translate-y-0.5 hover:bg-[#f4f0ff] hover:shadow-win95-lg"
+              className="mt-5 flex w-fit items-center gap-3 border-2 border-black bg-white px-3 py-2 shadow-win95 transition hover:-translate-y-0.5 hover:bg-[#e3fcf7] hover:shadow-win95-lg"
               aria-label={`${referenceLink.label} — abrir sitio oficial`}
             >
               <span
                 aria-hidden="true"
-                className="border-r-2 border-black pr-3 font-head text-base font-bold lowercase text-[#6e56cf]"
+                className="border-r-2 border-black pr-3 font-head text-base font-bold lowercase text-[#00684a]"
               >
                 {referenceLink.brand}
               </span>
@@ -239,18 +282,24 @@ export function ProjectDetailsTabs({
             ))}
           </dl>
 
-          <Button asChild size="lg" className="mt-7 w-full justify-center sm:w-auto">
-            <Link href={href} target="_blank" rel="noopener noreferrer">
-              {ctaLabel} ↗
-            </Link>
-          </Button>
+          {href && ctaLabel && (
+            <Button
+              asChild
+              size="lg"
+              className="mt-7 w-full justify-center sm:w-auto lg:mt-auto"
+            >
+              <Link href={href} target="_blank" rel="noopener noreferrer">
+                {ctaLabel} ↗
+              </Link>
+            </Button>
+          )}
         </div>
-      ) : (
+      ) : activeTab === "images" ? (
         <div
           id={imagesPanelId}
           role="tabpanel"
           aria-labelledby={imagesTabId}
-          className="flex min-h-0 flex-1 flex-col gap-4 p-4 sm:p-6"
+          className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto p-4 sm:p-6"
         >
           <div className="flex items-center justify-between gap-3">
             <Text className="font-mono text-xs font-bold uppercase tracking-widest text-black/60">
@@ -258,7 +307,7 @@ export function ProjectDetailsTabs({
             </Text>
             <span
               aria-live="polite"
-              className="shrink-0 border-2 border-black bg-[#ffdb33] px-2 py-1 font-mono text-[10px] font-bold shadow-win95"
+              className="shrink-0 border-2 border-black bg-[#00ed64] px-2 py-1 font-mono text-[10px] font-bold shadow-win95"
             >
               {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
               {String(images.length).padStart(2, "0")}
@@ -269,7 +318,7 @@ export function ProjectDetailsTabs({
             role="region"
             aria-roledescription="carrusel"
             aria-label={`Capturas de ${projectName}`}
-            className="border-2 border-black bg-[#c0c0c0] p-2 shadow-win95"
+            className="border-2 border-black bg-[#d8eee5] p-2 shadow-win95"
           >
             <div className="relative overflow-hidden border-2 border-black bg-white">
               <button
@@ -295,7 +344,7 @@ export function ProjectDetailsTabs({
                     type="button"
                     onClick={showPreviousImage}
                     aria-label="Ver captura anterior"
-                    className="absolute left-2 top-1/2 grid size-10 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-xl font-bold shadow-win95 transition hover:bg-[#ffdb33] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none"
+                    className="absolute left-2 top-1/2 grid size-10 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-xl font-bold shadow-win95 transition hover:bg-[#00ed64] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none"
                   >
                     ←
                   </button>
@@ -303,7 +352,7 @@ export function ProjectDetailsTabs({
                     type="button"
                     onClick={showNextImage}
                     aria-label="Ver captura siguiente"
-                    className="absolute right-2 top-1/2 grid size-10 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-xl font-bold shadow-win95 transition hover:bg-[#ffdb33] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none"
+                    className="absolute right-2 top-1/2 grid size-10 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-xl font-bold shadow-win95 transition hover:bg-[#00ed64] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none"
                   >
                     →
                   </button>
@@ -339,8 +388,8 @@ export function ProjectDetailsTabs({
                   aria-current={index === activeImageIndex ? "true" : undefined}
                   className={`shrink-0 border-2 border-black p-1 transition ${
                     index === activeImageIndex
-                      ? "bg-[#ffdb33] shadow-win95"
-                      : "bg-[#c0c0c0] opacity-70 hover:bg-white hover:opacity-100"
+                      ? "bg-[#00ed64] shadow-win95"
+                      : "bg-[#d8eee5] opacity-70 hover:bg-white hover:opacity-100"
                   }`}
                 >
                   <span className="relative block h-14 w-20 overflow-hidden border border-black bg-white sm:h-16 sm:w-24">
@@ -360,7 +409,50 @@ export function ProjectDetailsTabs({
             </div>
           )}
         </div>
-      )}
+      ) : graphicDesign ? (
+        <div
+          id={graphicDesignPanelId}
+          role="tabpanel"
+          aria-labelledby={graphicDesignTabId}
+          className="min-h-0 flex-1 overflow-y-auto p-5 sm:p-7 lg:p-9"
+        >
+          <Text className="font-mono text-xs font-bold uppercase tracking-widest text-[#086dd2]">
+            {graphicDesign.eyebrow}
+          </Text>
+          <Text as="h3" className="mt-2 text-2xl font-bold text-[#002448] sm:text-3xl">
+            {graphicDesign.title}
+          </Text>
+          <Text className="mt-4 max-w-2xl leading-relaxed font-medium text-black/75">
+            {graphicDesign.description}
+          </Text>
+
+          <div className="mt-6 grid gap-3">
+            {graphicDesign.items.map((item, index) => (
+              <article
+                key={item.title}
+                className="grid grid-cols-[auto_1fr] gap-4 border-2 border-black bg-white p-4 shadow-win95"
+              >
+                <span
+                  aria-hidden="true"
+                  className={`grid size-10 place-items-center border-2 border-black font-mono text-xs font-bold text-white ${
+                    index % 2 === 0 ? "bg-[#002448]" : "bg-[#7a7a7a]"
+                  }`}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="min-w-0">
+                  <h4 className="font-head text-base font-bold text-[#002448] sm:text-lg">
+                    {item.title}
+                  </h4>
+                  <p className="mt-1 text-sm leading-relaxed font-medium text-black/70">
+                    {item.description}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       {isLightboxOpen && (
         <div
@@ -375,9 +467,9 @@ export function ProjectDetailsTabs({
             role="dialog"
             aria-modal="true"
             aria-label={`Galería ampliada de ${projectName}`}
-            className="flex max-h-[96vh] w-full max-w-7xl flex-col border-2 border-black bg-[#c0c0c0] p-2 shadow-[8px_8px_0_#000]"
+            className="flex max-h-[96vh] w-full max-w-7xl flex-col border-2 border-black bg-[#d8eee5] p-2 shadow-[8px_8px_0_#000]"
           >
-            <div className="flex items-center justify-between gap-3 border-2 border-black bg-[#00695c] px-3 py-2 text-white">
+            <div className="flex items-center justify-between gap-3 border-2 border-black bg-[#00684a] px-3 py-2 text-white">
               <span className="min-w-0 truncate font-mono text-xs font-bold uppercase sm:text-sm">
                 {projectName} · {activeImage.caption}
               </span>
@@ -386,7 +478,7 @@ export function ProjectDetailsTabs({
                 autoFocus
                 onClick={() => setIsLightboxOpen(false)}
                 aria-label="Cerrar galería"
-                className="grid size-8 shrink-0 place-items-center border-2 border-black bg-white font-head text-lg font-bold text-black shadow-win95 hover:bg-[#ff8080] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
+                className="grid size-8 shrink-0 place-items-center border-2 border-black bg-white font-head text-lg font-bold text-black shadow-win95 hover:bg-[#00ed64] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none"
               >
                 ×
               </button>
@@ -408,7 +500,7 @@ export function ProjectDetailsTabs({
                     type="button"
                     onClick={showPreviousImage}
                     aria-label="Ver captura anterior"
-                    className="absolute left-2 top-1/2 grid size-11 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-2xl font-bold shadow-win95 hover:bg-[#ffdb33] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none sm:left-4"
+                    className="absolute left-2 top-1/2 grid size-11 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-2xl font-bold shadow-win95 hover:bg-[#00ed64] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none sm:left-4"
                   >
                     ←
                   </button>
@@ -416,7 +508,7 @@ export function ProjectDetailsTabs({
                     type="button"
                     onClick={showNextImage}
                     aria-label="Ver captura siguiente"
-                    className="absolute right-2 top-1/2 grid size-11 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-2xl font-bold shadow-win95 hover:bg-[#ffdb33] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none sm:right-4"
+                    className="absolute right-2 top-1/2 grid size-11 -translate-y-1/2 place-items-center border-2 border-black bg-white font-head text-2xl font-bold shadow-win95 hover:bg-[#00ed64] active:translate-x-0.5 active:translate-y-[calc(-50%+2px)] active:shadow-none sm:right-4"
                   >
                     →
                   </button>
@@ -427,7 +519,7 @@ export function ProjectDetailsTabs({
             <div className="mt-2 flex items-center gap-2 overflow-x-auto border-2 border-black bg-white p-2">
               <span
                 aria-live="polite"
-                className="mr-1 shrink-0 border-2 border-black bg-[#ffdb33] px-2 py-1 font-mono text-[10px] font-bold"
+                className="mr-1 shrink-0 border-2 border-black bg-[#00ed64] px-2 py-1 font-mono text-[10px] font-bold"
               >
                 {String(activeImageIndex + 1).padStart(2, "0")} /{" "}
                 {String(images.length).padStart(2, "0")}
@@ -441,8 +533,8 @@ export function ProjectDetailsTabs({
                   aria-current={index === activeImageIndex ? "true" : undefined}
                   className={`shrink-0 border-2 border-black p-1 ${
                     index === activeImageIndex
-                      ? "bg-[#ffdb33] shadow-win95"
-                      : "bg-[#c0c0c0] opacity-70 hover:opacity-100"
+                      ? "bg-[#00ed64] shadow-win95"
+                      : "bg-[#d8eee5] opacity-70 hover:opacity-100"
                   }`}
                 >
                   <span className="relative block h-12 w-16 overflow-hidden border border-black bg-white sm:h-14 sm:w-20">

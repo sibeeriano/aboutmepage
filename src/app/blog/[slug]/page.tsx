@@ -17,23 +17,23 @@ const slugConfig: Record<
   { color: string; bgColor: string; icon: (props: { className?: string }) => ReactElement }
 > = {
   backend: {
-    color: "bg-[#ff9f7a]",
-    bgColor: "bg-[#ff9f7a]",
+    color: "bg-[#e3fcf7]",
+    bgColor: "bg-[#e3fcf7]",
     icon: CodeIcon,
   },
   frontend: {
-    color: "bg-[#ffdb33]",
-    bgColor: "bg-[#ffdb33]",
+    color: "bg-[#00ed64]",
+    bgColor: "bg-[#00ed64]",
     icon: FolderIcon,
   },
   experiencia: {
-    color: "bg-[#b19cd9]",
-    bgColor: "bg-[#b19cd9]",
+    color: "bg-[#c8f6e4]",
+    bgColor: "bg-[#c8f6e4]",
     icon: BriefcaseIcon,
   },
   educacion: {
-    color: "bg-[#84e084]",
-    bgColor: "bg-[#84e084]",
+    color: "bg-[#78e8b3]",
+    bgColor: "bg-[#78e8b3]",
     icon: GraduationIcon,
   },
 };
@@ -330,7 +330,7 @@ export default async function BlogPost({
   const Icon = config.icon;
 
   return (
-    <div id="top" className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
+    <div id="top" className="min-h-screen bg-[#d8eee5] p-2 sm:p-4">
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title={post.title.toUpperCase()}>
@@ -339,7 +339,7 @@ export default async function BlogPost({
                 asChild
                 variant="default"
                 size="sm"
-                className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
+                className="!bg-[#00ed64] !text-black hover:!bg-[#00cf58]"
               >
                 <Link href="/">
                   HOME
@@ -362,7 +362,7 @@ export default async function BlogPost({
 
             <article>
               <div className="mb-4 flex items-center gap-3 sm:mb-6 sm:gap-4">
-                <Icon className="size-12 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-16" />
+                <Icon className="size-12 text-[#00ed64] drop-shadow-[2px_2px_0_#000] sm:size-16" />
                 <Text
                   as="h1"
                   className="font-head text-xl font-bold text-white drop-shadow-[2px_2px_0_#000] sm:text-2xl"
@@ -510,7 +510,7 @@ export default async function BlogPost({
             </article>
           </main>
 
-          <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
+          <footer className="border-t-2 border-black bg-[#d8eee5] px-4 py-4 shadow-win95-inset sm:px-6">
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-center">
               <Text className="text-sm font-medium text-black sm:text-base">
                 © 2026 Facundo Gabriel Vara

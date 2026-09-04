@@ -9,7 +9,7 @@ const sections = [
   {
     id: "autor",
     title: "Autor",
-    color: "bg-[#b19cd9]",
+    color: "bg-[#c8f6e4]",
     icon: ContactIcon,
     content: `Facundo Gabriel Vara
 Software Engineer · Desarrollador de esta página`,
@@ -17,7 +17,7 @@ Software Engineer · Desarrollador de esta página`,
   {
     id: "stack",
     title: "Stack tecnológico",
-    color: "bg-[#ff9f7a]",
+    color: "bg-[#e3fcf7]",
     icon: CodeIcon,
     content: `Next.js 16 con App Router
 React 19 · TypeScript
@@ -27,7 +27,7 @@ RetroUI (NeoBrutalism) con shadcn/ui`,
   {
     id: "diseno",
     title: "Diseño y estética",
-    color: "bg-[#ffdb33]",
+    color: "bg-[#00ed64]",
     icon: FolderIcon,
     content: `Estilo Windows 95 / Neo Brutalist
 Fuentes: Archivo Black (títulos), Space Grotesk (texto)
@@ -37,7 +37,7 @@ Sombras 3D tipo Win95 (shadow-win95, shadow-win95-inset)`,
   {
     id: "estructura",
     title: "Estructura",
-    color: "bg-[#b19cd9]",
+    color: "bg-[#c8f6e4]",
     icon: FolderIcon,
     content: `Portada con propuesta de valor, tecnologías principales y accesos directos
 Sección Trabajos con Olen Market, ccExpedition y Güish en ventanas navegables
@@ -50,7 +50,7 @@ Diseño responsive para móvil y desktop`,
   {
     id: "desarrollo",
     title: "Desarrollo",
-    color: "bg-[#84e084]",
+    color: "bg-[#78e8b3]",
     icon: CodeIcon,
     content: `Arquitectura con Next.js App Router y componentes reutilizables
 Sistema visual compartido: WindowFrame, RetroIcons, Button y Card
@@ -64,7 +64,7 @@ Enlaces externos a proyectos, Prismic, email, GitHub y repositorio`,
 
 export default function AboutThisPage() {
   return (
-    <div id="top" className="min-h-screen bg-[#c0c0c0] p-2 sm:p-4">
+    <div id="top" className="min-h-screen bg-[#d8eee5] p-2 sm:p-4">
       <div className="mx-auto max-w-4xl">
         <WindowFrame>
           <WindowTitleBar title="ABOUT THIS PAGE - DESARROLLO">
@@ -73,7 +73,7 @@ export default function AboutThisPage() {
                 asChild
                 variant="default"
                 size="sm"
-                className="!bg-[#ffdb33] !text-black hover:!bg-[#ffcc00]"
+                className="!bg-[#00ed64] !text-black hover:!bg-[#00cf58]"
               >
                 <Link href="/">
                   HOME
@@ -87,7 +87,7 @@ export default function AboutThisPage() {
             </nav>
           </WindowTitleBar>
 
-          <main className="border-t-2 border-black bg-[#84e084] p-4 sm:p-6">
+          <main className="border-t-2 border-black bg-[#78e8b3] p-4 sm:p-6">
             <Button asChild variant="ghost" size="sm" className="mb-6 !bg-white/80">
               <Link href="/">
                 ← Volver
@@ -126,7 +126,7 @@ export default function AboutThisPage() {
                   >
                     <Card.Header>
                       <div className="flex items-center gap-3">
-                        <Icon className="size-10 shrink-0 text-[#ffdb33] drop-shadow-[2px_2px_0_#000] sm:size-12" />
+                        <Icon className="size-10 shrink-0 text-[#00ed64] drop-shadow-[2px_2px_0_#000] sm:size-12" />
                         <Card.Title className="!font-bold !text-black">
                           {section.title}
                         </Card.Title>
@@ -143,7 +143,7 @@ export default function AboutThisPage() {
             </div>
           </main>
 
-          <footer className="border-t-2 border-black bg-[#c0c0c0] px-4 py-4 shadow-win95-inset sm:px-6">
+          <footer className="border-t-2 border-black bg-[#d8eee5] px-4 py-4 shadow-win95-inset sm:px-6">
             <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 text-center">
               <Text className="text-sm font-medium text-black">
                 © 2026 Facundo Gabriel Vara

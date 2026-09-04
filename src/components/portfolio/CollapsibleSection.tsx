@@ -88,7 +88,7 @@ export function CollapsibleSection({
             <Text
               as="h2"
               className={cn(
-                "mt-1 text-2xl font-bold text-white drop-shadow-[3px_3px_0_#000] sm:text-4xl",
+                "mt-1 text-2xl font-bold text-[#001e2b] sm:text-4xl",
                 titleClassName,
               )}
             >
@@ -102,7 +102,7 @@ export function CollapsibleSection({
                 {badge}
               </span>
             )}
-            <span className="ml-auto border-2 border-black bg-white px-3 py-2 font-mono text-[10px] font-bold text-black shadow-win95 transition group-hover/section:bg-[#d8d8d8] sm:text-xs">
+            <span className="ml-auto border-2 border-black bg-white px-3 py-2 font-mono text-[10px] font-bold text-black shadow-win95 transition group-hover/section:bg-[#e3fcf7] sm:text-xs">
               <span className="group-open/section:hidden">EXPANDIR ↓</span>
               <span className="hidden group-open/section:inline">CONTRAER ↑</span>
             </span>

@@ -37,6 +37,13 @@
   --color-primary-hover: var(--primary-hover);
   --color-secondary-hover: var(--secondary-hover);
   --color-shadow-primary: var(--primary);
+  --color-mongo-ink: var(--mongo-ink);
+  --color-mongo-green: var(--mongo-green);
+  --color-mongo-deep: var(--mongo-deep);
+  --color-mongo-mint: var(--mongo-mint);
+  --color-mongo-frost: var(--mongo-frost);
+  --color-mongo-paper: var(--mongo-paper);
+  --color-mongo-chrome: var(--mongo-chrome);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -52,26 +59,33 @@
 
 :root {
   --radius: 0;
-  --background: #fff;
-  --foreground: #000;
+  --mongo-ink: #001e2b;
+  --mongo-green: #00ed64;
+  --mongo-deep: #00684a;
+  --mongo-mint: #c8f6e4;
+  --mongo-frost: #e3fcf7;
+  --mongo-paper: #f7fffb;
+  --mongo-chrome: #d8eee5;
+  --background: var(--mongo-paper);
+  --foreground: var(--mongo-ink);
   --card: #fff;
-  --card-foreground: #000;
+  --card-foreground: var(--mongo-ink);
   --popover: #fff;
-  --popover-foreground: #000;
-  --primary: #ffdb33;
-  --primary-hover: #ffcc00;
-  --primary-foreground: #000;
-  --secondary: #000;
-  --secondary-hover: #1a1a1a;
+  --popover-foreground: var(--mongo-ink);
+  --primary: var(--mongo-green);
+  --primary-hover: #00cf58;
+  --primary-foreground: var(--mongo-ink);
+  --secondary: var(--mongo-ink);
+  --secondary-hover: #023430;
   --secondary-foreground: #fff;
-  --muted: #aeaeae;
-  --muted-foreground: #5a5a5a;
-  --accent: #fae583;
-  --accent-foreground: #000;
+  --muted: var(--mongo-chrome);
+  --muted-foreground: #3d5a61;
+  --accent: var(--mongo-mint);
+  --accent-foreground: var(--mongo-ink);
   --destructive: #e63946;
-  --border: #000;
-  --input: #e5e5e5;
-  --ring: #000;
+  --border: var(--mongo-ink);
+  --input: var(--mongo-frost);
+  --ring: var(--mongo-green);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -88,26 +102,26 @@
 }
 
 .dark {
-  --background: #1a1a1a;
-  --foreground: #f5f5f5;
-  --card: #242424;
+  --background: #001e2b;
+  --foreground: #f7fffb;
+  --card: #023430;
   --card-foreground: #f5f5f5;
-  --popover: #242424;
+  --popover: #023430;
   --popover-foreground: #f5f5f5;
-  --primary: #ffdb33;
-  --primary-hover: #ffcc00;
-  --primary-foreground: #000;
-  --secondary: #3a3a3a;
-  --secondary-hover: #4a4a4a;
+  --primary: #00ed64;
+  --primary-hover: #47f28a;
+  --primary-foreground: #001e2b;
+  --secondary: #00684a;
+  --secondary-hover: #008f65;
   --secondary-foreground: #f5f5f5;
-  --muted: #3f3f46;
-  --muted-foreground: #a0a0a0;
-  --accent: #fae583;
-  --accent-foreground: #000;
+  --muted: #0b4f43;
+  --muted-foreground: #c8f6e4;
+  --accent: #00684a;
+  --accent-foreground: #f7fffb;
   --destructive: #e63946;
-  --border: #3a3a3a;
-  --input: #3a3a3a;
-  --ring: #3a3a3a;
+  --border: #c8f6e4;
+  --input: #0b4f43;
+  --ring: #00ed64;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -125,29 +139,29 @@
 
 .shadow-win95 {
   box-shadow:
-    2px 2px 0 0 #dfdfdf,
-    -2px -2px 0 0 #808080;
+    2px 2px 0 0 #9ed9c3,
+    -2px -2px 0 0 #ffffff;
 }
 
 .shadow-win95-lg {
   box-shadow:
-    3px 3px 0 0 #dfdfdf,
-    -3px -3px 0 0 #808080;
+    3px 3px 0 0 #8bcfb6,
+    -3px -3px 0 0 #ffffff;
 }
 
 .shadow-win95-inset {
   box-shadow:
-    inset 2px 2px 0 0 #808080,
-    inset -2px -2px 0 0 #dfdfdf;
+    inset 2px 2px 0 0 #8bcfb6,
+    inset -2px -2px 0 0 #ffffff;
 }
 
 .retro-desktop {
-  background-color: #c0c0c0;
+  background-color: #e3fcf7;
   background-image:
-    linear-gradient(45deg, rgb(255 255 255 / 10%) 25%, transparent 25%),
-    linear-gradient(-45deg, rgb(255 255 255 / 10%) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgb(0 0 0 / 6%) 75%),
-    linear-gradient(-45deg, transparent 75%, rgb(0 0 0 / 6%) 75%);
+    linear-gradient(45deg, rgb(0 237 100 / 8%) 25%, transparent 25%),
+    linear-gradient(-45deg, rgb(0 104 74 / 5%) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgb(0 104 74 / 5%) 75%),
+    linear-gradient(-45deg, transparent 75%, rgb(0 237 100 / 8%) 75%);
   background-position:
     0 0,
     0 8px,
@@ -164,12 +178,12 @@
   25%,
   75% {
     box-shadow:
-      inset 0 0 0 5px #ffdb33,
+      inset 0 0 0 5px #00ed64,
       inset 0 0 0 8px #000;
   }
   50% {
     box-shadow:
-      inset 0 0 0 5px #84e084,
+      inset 0 0 0 5px #78e8b3,
       inset 0 0 0 8px #000;
   }
 }
@@ -191,7 +205,7 @@
     @apply bg-background text-foreground;
   }
   :focus-visible {
-    outline: 3px solid #000;
+    outline: 3px solid #00ed64;
     outline-offset: 3px;
   }
 }
