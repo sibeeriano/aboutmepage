@@ -10,3 +10,4 @@ const icoPath = path.join(__dirname, "..", "src", "app", "favicon.ico");
 const buf = await pngToIco(pngPath);
 fs.writeFileSync(icoPath, buf);
 console.log("favicon.ico generado en src/app/");
+

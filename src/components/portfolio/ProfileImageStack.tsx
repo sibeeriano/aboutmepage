@@ -6,7 +6,7 @@ import { useState } from "react";
 const profileCards = [
   {
     filename: "SIB.DEV.JPG",
-    src: "/sib-dev-profile.png",
+    src: "/sib-dev-logo.png",
     alt: "Identidad visual de sib.dev",
     leftMeta: "SIB.DEV",
     rightMeta: "IDEAS → PRODUCTOS",
