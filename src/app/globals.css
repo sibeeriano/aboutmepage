@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-white: var(--site-ivory);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
@@ -59,25 +60,26 @@
 
 :root {
   --radius: 0;
+  --site-ivory: #fdfeec;
   --mongo-ink: #001e2b;
   --mongo-green: #00ed64;
   --mongo-deep: #00684a;
   --mongo-mint: #c8f6e4;
   --mongo-frost: #e3fcf7;
-  --mongo-paper: #f7fffb;
+  --mongo-paper: var(--site-ivory);
   --mongo-chrome: #d8eee5;
   --background: var(--mongo-paper);
   --foreground: var(--mongo-ink);
-  --card: #fff;
+  --card: var(--site-ivory);
   --card-foreground: var(--mongo-ink);
-  --popover: #fff;
+  --popover: var(--site-ivory);
   --popover-foreground: var(--mongo-ink);
   --primary: var(--mongo-green);
   --primary-hover: #00cf58;
   --primary-foreground: var(--mongo-ink);
   --secondary: var(--mongo-ink);
   --secondary-hover: #023430;
-  --secondary-foreground: #fff;
+  --secondary-foreground: var(--site-ivory);
   --muted: var(--mongo-chrome);
   --muted-foreground: #3d5a61;
   --accent: var(--mongo-mint);
@@ -140,19 +142,19 @@
 .shadow-win95 {
   box-shadow:
     2px 2px 0 0 #9ed9c3,
-    -2px -2px 0 0 #ffffff;
+    -2px -2px 0 0 var(--site-ivory);
 }
 
 .shadow-win95-lg {
   box-shadow:
     3px 3px 0 0 #8bcfb6,
-    -3px -3px 0 0 #ffffff;
+    -3px -3px 0 0 var(--site-ivory);
 }
 
 .shadow-win95-inset {
   box-shadow:
     inset 2px 2px 0 0 #8bcfb6,
-    inset -2px -2px 0 0 #ffffff;
+    inset -2px -2px 0 0 var(--site-ivory);
 }
 
 .retro-desktop {
@@ -168,6 +170,64 @@
     8px -8px,
     -8px 0;
   background-size: 16px 16px;
+}
+
+@keyframes intro-splash-enter {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes intro-wordmark-enter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-splash {
+  background-image:
+    linear-gradient(rgb(0 104 74 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 104 74 / 5%) 1px, transparent 1px),
+    radial-gradient(circle at 50% 44%, #e3fcf7 0%, var(--site-ivory) 64%);
+  background-size: 56px 56px, 56px 56px, 100% 100%;
+  animation: intro-splash-enter 450ms ease-out both;
+}
+
+.intro-splash__wordmark {
+  animation: intro-wordmark-enter 700ms 120ms ease-out both;
+}
+
+.intro-splash__ascii-wordmark {
+  cursor: crosshair;
+  filter: drop-shadow(0 0 9px rgb(0 237 100 / 16%));
+}
+
+.intro-splash--leaving {
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 560ms 180ms ease-in;
+}
+
+.intro-splash--leaving .intro-splash__wordmark > :not(.intro-splash__ascii-wordmark):not(h1) {
+  opacity: 0;
+  transition: opacity 220ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-splash,
+  .intro-splash__wordmark {
+    animation: none;
+  }
 }
 
 @keyframes section-attention {

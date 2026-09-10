@@ -8,6 +8,7 @@ import { ProjectDetailsTabs } from "@/components/portfolio/ProjectDetailsTabs";
 import { CollapsibleProject } from "@/components/portfolio/CollapsibleProject";
 import { CollapsibleSection } from "@/components/portfolio/CollapsibleSection";
 import { ProfileImageStack } from "@/components/portfolio/ProfileImageStack";
+import { IntroSplash } from "@/components/portfolio/IntroSplash";
 import {
   BriefcaseIcon,
   ContactIcon,
@@ -99,7 +100,8 @@ const stack = [
 export default function Home() {
   return (
     <div className="retro-desktop min-h-screen p-2 sm:p-4">
-      <div className="mx-auto max-w-6xl">
+      <IntroSplash />
+      <div className="w-full">
         <WindowFrame>
           <WindowTitleBar title="sib.dev - facu.vara - software.engineer">
             <nav aria-label="Navegación principal" className="flex flex-wrap gap-2">
@@ -109,7 +111,7 @@ export default function Home() {
                 size="sm"
                 className="!bg-[#00ed64] !text-black hover:!bg-[#00cf58]"
               >
-                <a href="#top">Inicio</a>
+                <Link href="/">Inicio</Link>
               </Button>
               <Button asChild variant="outline" size="sm">
                 <a href="#trabajo">Trabajos</a>
@@ -126,7 +128,7 @@ export default function Home() {
           </WindowTitleBar>
 
           <main id="top" className="border-t-2 border-black bg-white">
-            <section className="grid items-center gap-8 p-5 sm:p-8 lg:grid-cols-[1.4fr_0.6fr] lg:gap-12 lg:p-12">
+            <section className="grid items-center gap-8 p-5 sm:p-8 lg:grid-cols-[minmax(0,700px)_minmax(360px,520px)] lg:justify-center lg:gap-12 lg:p-12 xl:gap-16">
               <div>
                 <Text
                   as="h1"
@@ -209,6 +211,7 @@ export default function Home() {
                     subtitle="Concesionario oficial FOTON - Presentación - Catálogo - estadísticas - Panel Admin"
                 imageSrc="/projects/gallatrack-whatsapp-business.png"
                 imageAlt="Símbolo de GallaTrack"
+                detailHref="/proyectos/gallatrack"
               >
                 <div className="border-b-2 border-black bg-[#e3fcf7] p-4 sm:p-6 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:border-r-2 lg:border-b-0">
                   <div className="flex flex-col border-2 border-black bg-white shadow-win95-lg lg:min-h-0 lg:flex-1">
@@ -337,6 +340,7 @@ export default function Home() {
                   subtitle="E-commerce · Panel administrativo"
                   imageSrc="/projects/olen-card-logo.png"
                   imageAlt="Logo de Olen Market"
+                  detailHref="/proyectos/olen-market"
                 >
                   <div className="border-b-2 border-black bg-[#e3fcf7] p-4 sm:p-6 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:border-r-2 lg:border-b-0">
                     <div className="flex flex-col border-2 border-black bg-white shadow-win95-lg lg:min-h-0 lg:flex-1">
@@ -438,6 +442,7 @@ export default function Home() {
                   subtitle="Finanzas personales · PWA"
                   imageSrc="/projects/ccexpedition-card-logo.png"
                   imageAlt="Logo de ccExpedition"
+                  detailHref="/proyectos/ccexpedition"
                 >
                   <div className="border-b-2 border-black bg-[#c8f6e4] p-4 sm:p-6 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:border-r-2 lg:border-b-0">
                     <div className="flex flex-col border-2 border-black bg-white shadow-win95-lg lg:min-h-0 lg:flex-1">
@@ -560,9 +565,10 @@ export default function Home() {
               <CollapsibleProject
                 title="Güish"
                 subtitle="Landing page · CMS administrable"
-                imageSrc="/projects/guish-home.png"
-                imageAlt="Logo de Güish sobre la portada de su sitio"
-                imageClassName="object-cover object-top p-0"
+                imageSrc="/projects/guish-card-logo.png"
+                imageAlt="Logo naranja de Güish"
+                imageClassName="object-contain p-8 sm:p-10"
+                detailHref="/proyectos/guish"
               >
                 <div className="border-b-2 border-black bg-[#00684a] p-4 sm:p-6 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:border-r-2 lg:border-b-0">
                   <div className="flex flex-col border-2 border-black bg-[#f7fffb] shadow-win95-lg lg:min-h-0 lg:flex-1">
@@ -807,9 +813,6 @@ export default function Home() {
                 </Link>
                 <Link href="/blog/educacion" className="underline underline-offset-2">
                   Educación
-                </Link>
-                <Link href="/about-this-page" className="underline underline-offset-2">
-                  Este sitio
                 </Link>
               </div>
             </div>

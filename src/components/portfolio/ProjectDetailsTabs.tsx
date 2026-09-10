@@ -12,37 +12,37 @@ import {
 import { Button } from "@/components/retroui/Button";
 import { Text } from "@/components/retroui/Text";
 
-type ProjectDetail = {
+export type ProjectDetail = {
   label: string;
   text: string;
   color: string;
 };
 
-type ProjectImage = {
+export type ProjectImage = {
   src: string;
   alt: string;
   caption: string;
 };
 
-type ProjectReferenceLink = {
+export type ProjectReferenceLink = {
   brand: string;
   label: string;
   href: string;
 };
 
-type GraphicDesignItem = {
+export type GraphicDesignItem = {
   title: string;
   description: string;
 };
 
-type GraphicDesignShowcase = {
+export type GraphicDesignShowcase = {
   eyebrow: string;
   title: string;
   description: string;
   items: GraphicDesignItem[];
 };
 
-type ProjectDetailsTabsProps = {
+export type ProjectDetailsTabsProps = {
   projectName: string;
   badge?: string;
   badgeClassName?: string;
