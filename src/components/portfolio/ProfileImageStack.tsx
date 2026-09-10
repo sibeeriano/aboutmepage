@@ -5,17 +5,17 @@ import { useState } from "react";
 
 const profileCards = [
   {
-    filename: "SIB.DEV.JPG",
+    filename: "THESIB.DEV.PNG",
     src: "/sib-dev-logo.png",
-    alt: "Identidad visual de sib.dev",
+    alt: "Identidad visual de 'The sib.dev'",
     leftMeta: "SIB.DEV",
     rightMeta: "IDEAS → PRODUCTOS",
   },
   {
-    filename: "FACUNDO.JPG",
+    filename: "FACU.PNG",
     src: "/fotoperfil.png",
-    alt: "Retrato de Facundo Gabriel Vara",
-    leftMeta: "BUENOS AIRES, AR",
+    alt: "Retrato de Facu Vara",
+    leftMeta: "BASED IN BUENOS AIRES,AR",
     rightMeta: "C1+ ENGLISH",
   },
 ];
