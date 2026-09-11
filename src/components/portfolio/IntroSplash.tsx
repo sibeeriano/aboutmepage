@@ -1,11 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AsciiWordmark } from "./AsciiWordmark";
 
+const INTRO_SEEN_KEY = "sib.dev:intro-seen";
+
 export function IntroSplash() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isLeaving, setIsLeaving] = useState(false);
+  const isLeavingRef = useRef(false);
+
+  useEffect(() => {
+    if (sessionStorage.getItem(INTRO_SEEN_KEY) === "1") {
+      return;
+    }
+    setIsOpen(true);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -17,7 +27,7 @@ export function IntroSplash() {
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        dismissSplash();
       }
     };
 
@@ -29,15 +39,17 @@ export function IntroSplash() {
     };
   }, [isOpen]);
 
-  if (!isOpen) {
-    return null;
-  }
-
-  const closeSplash = () => {
-    if (isLeaving) return;
+  const dismissSplash = () => {
+    if (isLeavingRef.current) return;
+    isLeavingRef.current = true;
+    sessionStorage.setItem(INTRO_SEEN_KEY, "1");
     setIsLeaving(true);
     window.setTimeout(() => setIsOpen(false), 560);
   };
+
+  if (!isOpen) {
+    return null;
+  }
 
   return (
     <section
@@ -46,18 +58,6 @@ export function IntroSplash() {
       aria-label="Portada de sib.dev"
       className={`intro-splash fixed inset-0 z-[100] flex min-h-dvh overflow-hidden bg-white text-black ${isLeaving ? "intro-splash--leaving" : ""}`}
     >
-      <button
-        type="button"
-        autoFocus
-        onClick={closeSplash}
-        aria-label="Cerrar portada y entrar al portfolio"
-        className="group absolute top-4 right-4 z-20 grid size-12 place-items-center border-2 border-[#00ed64] bg-white font-[family-name:var(--font-ubuntu)] text-2xl font-bold text-[#00684a] shadow-[3px_3px_0_#c8f6e4] transition hover:-translate-y-0.5 hover:bg-[#00ed64] hover:text-black active:translate-x-1 active:translate-y-1 active:shadow-none sm:top-6 sm:right-6 sm:size-14 sm:text-3xl"
-      >
-        <span aria-hidden="true" className="transition group-hover:rotate-90">
-          ×
-        </span>
-      </button>
-
       <div aria-hidden="true" className="absolute inset-0">
         <span className="absolute top-[8%] left-[23%] h-[9%] w-[8%] bg-[#e3fcf7]" />
         <span className="absolute top-[13%] left-[31%] h-[17%] w-[11%] bg-[#c8f6e4]/70" />
@@ -68,15 +68,22 @@ export function IntroSplash() {
 
       <div className="relative z-10 flex w-full flex-1 items-center justify-center px-5 pb-[6vh] sm:px-10">
         <div className="intro-splash__wordmark relative w-fit max-w-full">
-          <span className="absolute top-[1%] left-[4%] z-10 font-[family-name:var(--font-ubuntu)] text-[clamp(1.6rem,4vw,3.7rem)] leading-none font-bold tracking-[-0.055em] text-[#8fd8f7] lowercase sm:left-[17%]">
+          <span
+            aria-hidden="true"
+            className="absolute z-10 -translate-y-[92%] font-[family-name:var(--font-causten)] text-[clamp(1.6rem,4vw,3.7rem)] leading-none font-medium tracking-[-0.055em] text-[#8fd8f7] lowercase"
+            style={{
+              left: "var(--wordmark-s-left, 4%)",
+              top: "var(--wordmark-s-top, 1%)",
+            }}
+          >
             the
           </span>
           <AsciiWordmark isLeaving={isLeaving} />
           <span className="mx-auto mt-7 block h-1 w-[62%] bg-[#8fd8f7] sm:mt-10" />
           <button
             type="button"
-            onClick={closeSplash}
-            className="mx-auto mt-10 block font-[family-name:var(--font-ubuntu)] text-xl font-bold tracking-[0.04em] text-[#00ed64] uppercase transition hover:scale-105 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#00ed64] sm:mt-14 sm:text-3xl"
+            onClick={dismissSplash}
+            className="mx-auto mt-10 block font-[family-name:var(--font-causten)] text-xl font-medium tracking-[0.04em] text-[#00ed64] uppercase transition hover:scale-105 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-[#00ed64] sm:mt-14 sm:text-3xl"
           >
             Entrar
           </button>

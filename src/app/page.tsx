@@ -209,8 +209,9 @@ export default function Home() {
               <CollapsibleProject
                 title="GallaTrack"
                     subtitle="Concesionario oficial FOTON - Presentación - Catálogo - estadísticas - Panel Admin"
-                imageSrc="/projects/gallatrack-whatsapp-business.png"
-                imageAlt="Símbolo de GallaTrack"
+                imageSrc="/projects/gallatrack-card-logo.png"
+                imageAlt="Logotipo de GallaTrack"
+                imageClassName="object-contain p-4 sm:p-5"
                 detailHref="/proyectos/gallatrack"
               >
                 <div className="border-b-2 border-black bg-[#e3fcf7] p-4 sm:p-6 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:border-r-2 lg:border-b-0">

@@ -24,8 +24,8 @@ export const portfolioProjects: PortfolioProject[] = [
     title: "GallaTrack",
     subtitle:
       "Concesionario oficial FOTON · Presentación · Catálogo · Estadísticas · Panel Admin",
-    cardImageSrc: "/projects/gallatrack-whatsapp-business.png",
-    cardImageAlt: "Símbolo de GallaTrack",
+    cardImageSrc: "/projects/gallatrack-card-logo.png",
+    cardImageAlt: "Logotipo de GallaTrack",
     preview: {
       url: "https://www.gallatrack.com.ar/",
       displayUrl: "https://www.gallatrack.com.ar",

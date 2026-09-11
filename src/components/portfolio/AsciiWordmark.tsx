@@ -71,18 +71,31 @@ export function AsciiWordmark({ isLeaving = false }: AsciiWordmarkProps) {
 
       const computedFont = getComputedStyle(canvas).fontFamily;
       let fontSize = height * 0.78;
-      maskContext.font = `700 ${fontSize}px ${computedFont}`;
-      const measured = maskContext.measureText("sib.dev").width;
+      maskContext.font = `500 ${fontSize}px ${computedFont}`;
+      let measured = maskContext.measureText("sib.dev").width;
       if (measured > width * 0.98) {
         fontSize *= (width * 0.98) / measured;
+        maskContext.font = `500 ${fontSize}px ${computedFont}`;
+        measured = maskContext.measureText("sib.dev").width;
+      }
+
+      const textCenterY = height / 2 + fontSize * 0.025;
+      const metrics = maskContext.measureText("sib.dev");
+      const textLeft = (width - measured) / 2;
+      const textTop =
+        textCenterY - (metrics.actualBoundingBoxAscent || fontSize * 0.72);
+      const wordmarkRoot = canvas.parentElement;
+      if (wordmarkRoot) {
+        wordmarkRoot.style.setProperty("--wordmark-s-left", `${textLeft}px`);
+        wordmarkRoot.style.setProperty("--wordmark-s-top", `${Math.max(0, textTop)}px`);
       }
 
       maskContext.clearRect(0, 0, width, height);
-      maskContext.font = `700 ${fontSize}px ${computedFont}`;
+      maskContext.font = `500 ${fontSize}px ${computedFont}`;
       maskContext.textAlign = "center";
       maskContext.textBaseline = "middle";
       maskContext.fillStyle = "#000";
-      maskContext.fillText("sib.dev", width / 2, height / 2 + fontSize * 0.025);
+      maskContext.fillText("sib.dev", width / 2, textCenterY);
 
       const pixels = maskContext.getImageData(0, 0, mask.width, mask.height).data;
       const nextParticles: Particle[] = [];
@@ -211,7 +224,7 @@ export function AsciiWordmark({ isLeaving = false }: AsciiWordmarkProps) {
       <canvas
         ref={canvasRef}
         aria-hidden="true"
-        className="intro-splash__ascii-wordmark block h-[clamp(9.5rem,25vw,19rem)] w-[min(94vw,82rem)] font-[family-name:var(--font-ubuntu)]"
+        className="intro-splash__ascii-wordmark block h-[clamp(9.5rem,25vw,19rem)] w-[min(94vw,82rem)] font-[family-name:var(--font-causten)]"
       />
     </>
   );

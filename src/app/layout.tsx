@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo_Black, Space_Grotesk, Ubuntu } from "next/font/google";
+import { Archivo_Black, Space_Grotesk } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const siteUrl =
@@ -28,10 +29,11 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-const ubuntu = Ubuntu({
-  subsets: ["latin"],
-  weight: "700",
-  variable: "--font-ubuntu",
+const caustenMedium = localFont({
+  src: "../fonts/Causten-Medium.ttf",
+  weight: "500",
+  style: "normal",
+  variable: "--font-causten",
   display: "swap",
 });
 
@@ -111,7 +113,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${archivoBlack.variable} ${spaceGrotesk.variable} ${ubuntu.variable} overflow-x-hidden font-sans antialiased`}
+        className={`${archivoBlack.variable} ${spaceGrotesk.variable} ${caustenMedium.variable} overflow-x-hidden font-sans antialiased`}
       >
         <script
           type="application/ld+json"
