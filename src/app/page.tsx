@@ -452,6 +452,7 @@ export default function Home() {
                   subtitle="Finanzas personales · PWA"
                   imageSrc="/projects/ccexpedition-card-logo.png"
                   imageAlt="Logo de ccExpedition"
+                  badge="Proyecto propio"
                   detailHref="/proyectos/ccexpedition"
                 >
                   <div className="border-b-2 border-black bg-[#c8f6e4] p-4 sm:p-6 lg:flex lg:h-full lg:min-h-0 lg:flex-col lg:border-r-2 lg:border-b-0">

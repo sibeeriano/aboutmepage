@@ -10,6 +10,7 @@ type CollapsibleProjectProps = {
   imageAlt: string;
   detailHref: string;
   imageClassName?: string;
+  badge?: string;
   children?: ReactNode;
 };
 
@@ -20,6 +21,7 @@ export function CollapsibleProject({
   imageAlt,
   detailHref,
   imageClassName,
+  badge = "Cliente",
 }: CollapsibleProjectProps) {
   return (
     <article className="min-h-[360px]">
@@ -29,9 +31,9 @@ export function CollapsibleProject({
         className="group flex h-full min-h-[360px] flex-col overflow-hidden border-2 border-black bg-white shadow-win95 transition-transform hover:-translate-y-1 hover:shadow-win95-lg"
       >
         <div className="flex items-center justify-between gap-3 border-b-2 border-black bg-[#d8eee5] px-3 py-2">
-          <h3 className="font-head text-base font-bold">{title}</h3>
-          <span className="font-mono text-[10px] font-bold uppercase text-black/60">
-            Proyecto
+          <h3 className="min-w-0 font-head text-base font-bold">{title}</h3>
+          <span className="shrink-0 font-mono text-[10px] font-bold uppercase text-black/60">
+            {badge}
           </span>
         </div>
 
