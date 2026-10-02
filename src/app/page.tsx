@@ -201,7 +201,7 @@ export default function Home() {
               indexLabel="01 / Trabajo destacado"
               title="La visión del cliente hecha realidad"
               backgroundClassName="bg-white"
-              badge="4 PROYECTOS"
+              badge="5 PROYECTOS"
               controlClassName="bg-[#00ed64]"
               withTopBorder={false}
             >
@@ -437,6 +437,15 @@ export default function Home() {
                     ctaLabel="Visitar Olen"
                   />
                 </CollapsibleProject>
+
+                <CollapsibleProject
+                  title="Pistón Libre"
+                  subtitle="Blog de noticias de autos"
+                  imageSrc="/projects/pistonlibre-card-isotipo.png"
+                  imageAlt="Logotipo de Pistón Libre"
+                  imageClassName="object-contain p-6 sm:p-8"
+                  detailHref="/proyectos/piston-libre"
+                />
 
                 <CollapsibleProject
                   title="ccExpedition"

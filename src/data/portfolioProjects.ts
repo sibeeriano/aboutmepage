@@ -184,6 +184,67 @@ export const portfolioProjects: PortfolioProject[] = [
     },
   },
   {
+    slug: "piston-libre",
+    title: "Pistón Libre",
+    subtitle: "Blog de noticias de autos",
+    cardImageSrc: "/projects/pistonlibre-card-isotipo.png",
+    cardImageAlt: "Logotipo de Pistón Libre",
+    cardImageClassName: "object-contain p-6 sm:p-8",
+    preview: {
+      url: "https://www.pistonlibre.com.ar/",
+      displayUrl: "https://www.pistonlibre.com.ar",
+      title: "Vista interactiva de Pistón Libre",
+      instruction: "Desplazate dentro del cuadro para recorrer el blog",
+      openLabel: "Abrir blog completo",
+      backgroundClassName: "bg-[#e3fcf7]",
+    },
+    details: {
+      projectName: "Pistón Libre",
+      badge: "Blog de autos",
+      badgeClassName: "bg-[#00ed64]",
+      category: "Blog · Noticias de autos",
+      title: "Pistón Libre",
+      description:
+        "Un blogsito para seguir las noticias del mundo del auto en un solo lugar. Reúne las notas que publican otros medios y las muestra a medida que salen, para leer lo del día sin ir saltando de un sitio a otro.",
+      details: [
+        {
+          label: "Qué es",
+          text: "Junta noticias de varios blogs y portales de autos y las presenta juntas, listas para recorrer apenas se publican.",
+          color: "#e3fcf7",
+        },
+        {
+          label: "Cómo se lee",
+          text: "Se puede filtrar por medio, buscar un tema y abrir cada nota en su publicación original.",
+          color: "#c8f6e4",
+        },
+        {
+          label: "La semana",
+          text: "Además de lo de hoy, arma un recorte con lo más relevante de la semana.",
+          color: "#78e8b3",
+        },
+      ],
+      images: [
+        {
+          src: "/projects/pistonlibre-hoy.png",
+          alt: "Portada de Pistón Libre con las noticias del día",
+          caption: "Noticias del día",
+        },
+        {
+          src: "/projects/pistonlibre-semana.png",
+          alt: "Recorte semanal de Pistón Libre con los temas más relevantes",
+          caption: "Lo más relevante de la semana",
+        },
+        {
+          src: "/projects/pistonlibre-todas.png",
+          alt: "Archivo de Pistón Libre con todas las noticias y filtro por fecha",
+          caption: "Archivo de noticias",
+        },
+      ],
+      href: "https://www.pistonlibre.com.ar/",
+      ctaLabel: "Visitar Pistón Libre",
+    },
+  },
+  {
     slug: "ccexpedition",
     title: "ccExpedition",
     subtitle: "Finanzas personales · PWA",
